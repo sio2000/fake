@@ -1,11 +1,10 @@
+import { UPLOAD_API_PREFIX } from "@/lib/upload-url";
 import { useNetlifyBlobs } from "@/lib/db/json-storage";
 import path from "path";
 
 export function getTmpUploadDir() {
   return path.join("/tmp", "pouma-uploads");
 }
-
-const UPLOAD_API_PREFIX = "/api/uploads/resources/";
 
 export function uploadKeyFromFilename(filename: string) {
   return `resources/${filename}`;

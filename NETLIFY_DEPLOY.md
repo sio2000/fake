@@ -35,6 +35,8 @@
 
 Τοπικά (`npm run dev`) συνεχίζει να γράφει στον φάκελο `data/` και `public/uploads/`.
 
+Ανεβασμένες εικόνες/PDF σερβίρονται από `/api/uploads/resources/...` (Netlify Blobs `pouma-uploads`). Μετά από deploy διορθώσεων, **ξανανέβασε** τα αρχεία από το admin αν δεν εμφανίζονται (τα παλιά μπορεί να μην είχαν αποθηκευτεί σωστά στο blob).
+
 ## 5. Custom domain
 
 1. Netlify → **Domain management** → πρόσθεσε το domain.

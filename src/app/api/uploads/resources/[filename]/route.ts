@@ -1,11 +1,35 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
-import {
-  getTmpUploadDir,
-  getUploadStore,
-  uploadKeyFromFilename,
-} from "@/lib/db/upload-storage";
+import { readUploadFromBlob } from "@/lib/db/upload-blob";
+import { getTmpUploadDir, useNetlifyBlobs } from "@/lib/db/upload-storage";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+function guessContentType(filename: string): string {
+  const ext = path.extname(filename).toLowerCase();
+  if (ext === ".pdf") return "application/pdf";
+  if (ext === ".png") return "image/png";
+  if (ext === ".webp") return "image/webp";
+  if (ext === ".gif") return "image/gif";
+  if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg";
+  return "application/octet-stream";
+}
+
+function fileResponse(body: Buffer, contentType: string) {
+  return new NextResponse(new Uint8Array(body), {
+    headers: {
+      "Content-Type": contentType,
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+  });
+}
+
+async function readFromDisk(diskPath: string, filename: string) {
+  const body = await fs.readFile(diskPath);
+  return fileResponse(body, guessContentType(filename));
+}
 
 export async function GET(
   _request: Request,
@@ -16,53 +40,24 @@ export async function GET(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  try {
-    const store = await getUploadStore();
-    const blob = await store.getWithMetadata(uploadKeyFromFilename(filename));
-    if (blob?.data) {
-      const raw = blob.data as ArrayBuffer | Uint8Array | string;
-      const body =
-        typeof raw === "string"
-          ? Buffer.from(raw)
-          : raw instanceof Uint8Array
-            ? Buffer.from(raw)
-            : Buffer.from(new Uint8Array(raw));
-
-      const contentType =
-        (blob.metadata?.contentType as string | undefined) ?? "application/octet-stream";
-
-      return new NextResponse(body, {
-        headers: {
-          "Content-Type": contentType,
-          "Cache-Control": "public, max-age=31536000, immutable",
-        },
-      });
+  if (useNetlifyBlobs()) {
+    try {
+      const blob = await readUploadFromBlob(filename);
+      if (blob) return fileResponse(blob.body, blob.contentType);
+    } catch (err) {
+      console.error("[uploads] blob read failed:", filename, err);
     }
+  }
+
+  const localPath = path.join(process.cwd(), "public", "uploads", "resources", filename);
+  try {
+    return await readFromDisk(localPath, filename);
   } catch {
-    // Fall through to /tmp disk fallback.
+    // continue
   }
 
   try {
-    const diskPath = path.join(getTmpUploadDir(), filename);
-    const body = await fs.readFile(diskPath);
-    const ext = path.extname(filename).toLowerCase();
-    const contentType =
-      ext === ".pdf"
-        ? "application/pdf"
-        : ext === ".png"
-          ? "image/png"
-          : ext === ".webp"
-            ? "image/webp"
-            : ext === ".gif"
-              ? "image/gif"
-              : "image/jpeg";
-
-    return new NextResponse(body, {
-      headers: {
-        "Content-Type": contentType,
-        "Cache-Control": "public, max-age=31536000, immutable",
-      },
-    });
+    return await readFromDisk(path.join(getTmpUploadDir(), filename), filename);
   } catch {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }

@@ -1,4 +1,5 @@
 import type { Resource, ResourceType } from "@/lib/db/types";
+import { resolveMediaUrl } from "@/lib/upload-url";
 
 export const RESOURCE_TYPES: ResourceType[] = ["pdf", "articles", "extras", "announcements"];
 
@@ -10,7 +11,14 @@ export function normalizeResourceType(type: string): ResourceType {
 }
 
 export function normalizeResource(resource: Resource): Resource {
-  return { ...resource, type: normalizeResourceType(resource.type) };
+  return {
+    ...resource,
+    type: normalizeResourceType(resource.type),
+    fileUrl: resource.fileUrl ? resolveMediaUrl(resource.fileUrl) ?? resource.fileUrl : undefined,
+    thumbnailUrl: resource.thumbnailUrl
+      ? resolveMediaUrl(resource.thumbnailUrl) ?? resource.thumbnailUrl
+      : undefined,
+  };
 }
 
 export const TEXT_WRAP_CLASS =

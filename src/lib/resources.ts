@@ -1,4 +1,5 @@
 import type { Resource } from "@/lib/db/types";
+import { resolveMediaUrl } from "@/lib/upload-url";
 import { normalizeExternalUrl, displayHostname } from "@/lib/url";
 
 const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif)$/i;
@@ -20,9 +21,7 @@ export function getExternalLinkLabel(r: Resource): string | null {
 }
 
 export function getFileUrl(r: Resource): string | null {
-  if (!r.fileUrl?.trim()) return null;
-  const path = r.fileUrl.trim();
-  return path.startsWith("/") ? path : `/${path}`;
+  return resolveMediaUrl(r.fileUrl);
 }
 
 export function isImageResource(r: Resource): boolean {
@@ -37,13 +36,14 @@ export function isPdfResource(r: Resource): boolean {
 }
 
 export function getThumbnailSrc(r: Resource): string | null {
-  if (r.thumbnailUrl?.trim()) {
-    const path = r.thumbnailUrl.trim();
-    return path.startsWith("/") ? path : `/${path}`;
-  }
+  const fromThumb = resolveMediaUrl(r.thumbnailUrl);
+  if (fromThumb) return fromThumb;
+
   if (r.fileUrl && IMAGE_EXT.test(r.fileUrl)) {
-    const path = r.fileUrl.trim();
-    return path.startsWith("/") ? path : `/${path}`;
+    return resolveMediaUrl(r.fileUrl);
   }
+
   return null;
 }
+
+export { isUploadMediaUrl, resolveMediaUrl } from "@/lib/upload-url";

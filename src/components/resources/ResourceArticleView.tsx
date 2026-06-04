@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import ResourceImage from "@/components/resources/ResourceImage";
 import { useTranslations, useLocale } from "next-intl";
 import type { Resource } from "@/lib/db/types";
 import {
@@ -83,7 +83,7 @@ export default function ResourceArticleView({ resource: r }: Props) {
             className="group relative w-full aspect-[16/10] rounded-3xl overflow-hidden border border-lav-100 shadow-medium mb-10 cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-lav-400"
             aria-label={t("viewFullscreen")}
           >
-            <Image
+            <ResourceImage
               src={thumbnailSrc}
               alt=""
               fill
@@ -135,7 +135,7 @@ export default function ResourceArticleView({ resource: r }: Props) {
             className="group relative mt-12 w-full aspect-[4/3] rounded-3xl overflow-hidden border border-lav-100 shadow-soft cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-lav-400"
             aria-label={t("viewFullscreen")}
           >
-            <Image src={fileUrl} alt="" fill className="object-contain bg-lav-50" sizes="720px" />
+            <ResourceImage src={fileUrl} alt="" fill className="object-contain bg-lav-50" sizes="720px" />
             <span className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
               {t("clickToExpand")}
             </span>

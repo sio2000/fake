@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
+import ResourceImage from "@/components/resources/ResourceImage";
 import { useTranslations, useLocale } from "next-intl";
 import type { Resource } from "@/lib/db/types";
 import {
@@ -43,7 +43,7 @@ export default function ResourceCard({
 
       {thumbnailSrc && (
         <div className="relative aspect-[16/9] bg-lav-50 border-b border-lav-100 overflow-hidden">
-          <Image
+          <ResourceImage
             src={thumbnailSrc}
             alt=""
             fill
