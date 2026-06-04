@@ -1,5 +1,6 @@
 import HeroSection from "@/components/sections/HeroSection";
 import ScrollQuotes from "@/components/sections/ScrollQuotes";
+import DimitraVideosSection from "@/components/sections/DimitraVideosSection";
 import PhilosophySection from "@/components/sections/PhilosophySection";
 import PersonalizationSection from "@/components/sections/PersonalizationSection";
 import CommunicationSection from "@/components/sections/CommunicationSection";
@@ -13,6 +14,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ScrollQuotes />
+      <DimitraVideosSection />
       <PhilosophySection />
       <PersonalizationSection />
       <CommunicationSection />

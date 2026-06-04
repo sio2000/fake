@@ -30,8 +30,16 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (never commit secrets)
 .env*
+!.env.example
+# Instagram scrape artifacts (not for production)
+/public/dimitra.html
+/public/dimitra2.html
+/public/dimitra3.html
+/public/dimitra_files/
+/public/dimitra2_files/
+/public/dimitra3_files/
 
 # local database (contact submissions & dynamic resources)
 /data/

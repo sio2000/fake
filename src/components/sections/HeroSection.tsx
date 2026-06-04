@@ -65,7 +65,7 @@ export default function HeroSection() {
           animate={{ opacity: [0.4, 0.72, 0.4] }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(212,196,245,0.58)_0%,transparent_68%)] blur-3xl" />
+          <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(206,180,247,0.62)_0%,transparent_68%)] blur-3xl" />
         </motion.div>
 
         <motion.div
@@ -74,7 +74,7 @@ export default function HeroSection() {
           animate={{ opacity: [0.15, 0.38, 0.15] }}
           transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         >
-          <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(228,196,90,0.38)_0%,transparent_65%)] blur-3xl" />
+          <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(245,179,53,0.42)_0%,transparent_65%)] blur-3xl" />
         </motion.div>
 
         <motion.div

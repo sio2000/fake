@@ -13,17 +13,18 @@
 
 | Variable | Περιγραφή |
 |----------|-----------|
-| `ADMIN_PASSWORD` | Κωδικός σύνδεσης admin panel |
-| `ADMIN_SESSION_SECRET` | Τυχαίο μυστικό (π.χ. 32+ χαρακτήρες) |
-| `NEXT_PUBLIC_SITE_URL` | Το τελικό domain, π.χ. `https://thepoumaacademy.com` (χωρίς `/` στο τέλος) |
+| `ADMIN_EMAIL` | Email σύνδεσης admin (π.χ. `ask@thepoumaacademy.com`) |
+| `ADMIN_PASSWORD` | Κωδικός σύνδεσης admin panel (μόνο στο Netlify, όχι στο Git) |
+| `ADMIN_SESSION_SECRET` | Τυχαίο μυστικό (π.χ. 32+ χαρακτήρες) — υποχρεωτικό σε production |
+| `NEXT_PUBLIC_SITE_URL` | Το τελικό domain, π.χ. `https://poumaacademy.gr` (χωρίς `/` στο τέλος) |
 
 Μετά την αλλαγή env vars, κάνε **Trigger deploy** για να εφαρμοστούν.
 
 ## 3. Admin panel
 
 - URL: `https://το-domain-σου.com/admin`
-- Email: `ask@thepoumaacademy.com` (όπως στο `siteConfig`)
-- Password: η τιμή του `ADMIN_PASSWORD`
+- Email: η τιμή του `ADMIN_EMAIL` (προεπιλογή `ask@thepoumaacademy.com`)
+- Password: η τιμή του `ADMIN_PASSWORD` (ορίζεται μόνο στις μεταβλητές Netlify)
 
 ## 4. Αποθήκευση δεδομένων στο Netlify
 

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
-import { siteConfig } from "@/lib/seo";
 import { apiFetch, parseJsonResponse } from "@/lib/api-client";
 
 export default function AdminLoginPage() {
@@ -97,7 +96,7 @@ export default function AdminLoginPage() {
               type="email"
               required
               autoComplete="email"
-              placeholder={siteConfig.email}
+              placeholder="Το email σας"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full px-4 py-3 rounded-xl border border-lav-200 bg-ivory/50 text-plum text-sm focus:outline-none focus:ring-2 focus:ring-lav-400/50"

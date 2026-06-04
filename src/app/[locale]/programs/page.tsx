@@ -38,7 +38,7 @@ const PATH_META: Record<
   path4: {
     accent: "from-lav-100 to-ivory",
     ring: "ring-lav-300/50",
-    node: "bg-plum",
+    node: "bg-lav-600",
   },
 };
 
@@ -278,7 +278,7 @@ export default function ProgramsPage() {
       {/* Journey */}
       <section
         ref={journeyRef}
-        className="py-20 md:py-28 px-6 relative overflow-hidden"
+        className="legacy-palette py-20 md:py-28 px-6 relative overflow-hidden"
         onMouseEnter={pause}
         onMouseLeave={resume}
         onFocusCapture={pause}

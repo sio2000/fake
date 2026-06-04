@@ -55,7 +55,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-plum overflow-hidden">
+    <footer className="relative bg-plum-mid overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
         <div className="absolute top-0 left-1/4 w-[600px] h-[320px] rounded-full bg-lav-800/28 blur-3xl" />
         <div className="absolute bottom-0 right-1/3 w-[450px] h-[220px] rounded-full bg-gold-400/10 blur-3xl" />

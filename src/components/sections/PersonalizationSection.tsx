@@ -33,7 +33,7 @@ export default function PersonalizationSection() {
           >
             <div className="relative w-full max-w-sm mx-auto">
               <div
-                className="rounded-3xl bg-plum overflow-hidden shadow-strong relative"
+                className="rounded-3xl bg-gradient-to-br from-plum-mid via-lav-900 to-lav-800 overflow-hidden shadow-strong relative"
                 style={{ minHeight: 360 }}
               >
                 <div className="absolute inset-0">

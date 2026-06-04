@@ -228,7 +228,7 @@ export default function ResourcesPage() {
                     onClick={() => setActive(cat)}
                     className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
                       active === cat
-                        ? "bg-plum text-white shadow-soft"
+                        ? "bg-lav-600 text-white shadow-soft"
                         : "bg-white/70 border border-lav-200/80 text-plum/55 hover:border-lav-400 hover:text-plum hover:bg-white"
                     }`}
                   >

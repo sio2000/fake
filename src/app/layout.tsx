@@ -1,22 +1,7 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { siteConfig } from "@/lib/seo";
+import { rootMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: "The Pouma Academy",
-    template: "%s",
-  },
-  description:
-    "Boutique transformation academy — English, communication coaching, and professional presence in Athens.",
-  applicationName: siteConfig.name,
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-};
+export const metadata = rootMetadata;
 
 export default function RootLayout({
   children,
@@ -24,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="h-full">
+    <html lang="el" className="h-full">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

@@ -19,7 +19,7 @@ export default function CtaSection() {
           {/* BG orbs inside card */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-lav-800/30 blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-gold-400/8 blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-gold-400/16 blur-3xl" />
             <div className="absolute inset-0 dot-grid opacity-[0.04]" />
           </div>
 

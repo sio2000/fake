@@ -8,6 +8,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { cn } from "@/lib/utils";
 import PremiumButton from "@/components/ui/PremiumButton";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import { X } from "lucide-react";
 import { EASE_LUXURY } from "@/lib/motion";
 
 export default function Navbar() {
@@ -78,7 +79,7 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 h-[4.5rem]"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
-          <Link href={lp("/")} onClick={handleLogoClick} className="flex items-center gap-3 group flex-shrink-0">
+          <Link href={lp("/")} onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial sm:flex-shrink-0 max-w-[calc(100%-3.5rem)]">
             <motion.div
               whileHover={{ scale: 1.05, rotate: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -93,11 +94,11 @@ export default function Navbar() {
                 priority
               />
             </motion.div>
-            <div className="hidden sm:block leading-tight max-w-[12.5rem]">
-              <span className="font-display text-base md:text-lg font-semibold text-lav-600 tracking-wide block leading-snug">
+            <div className="block leading-tight min-w-0">
+              <span className="font-display text-[15px] sm:text-base md:text-lg font-semibold text-lav-600 tracking-wide block leading-snug">
                 {brand("name")}
               </span>
-              <span className="font-script text-sm text-plum block leading-none mt-1 pl-0.5">
+              <span className="font-script text-[13px] sm:text-sm text-plum block leading-tight mt-0.5 sm:mt-1 pl-0.5 whitespace-normal">
                 {brand("tagline")}
               </span>
             </div>
@@ -173,13 +174,27 @@ export default function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(160% at calc(100% - 52px) 36px)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at calc(100% - 52px) 36px)" }}
             transition={{ duration: 0.55, ease: EASE_LUXURY }}
-            className="fixed inset-0 lg:hidden flex flex-col bg-plum"
+            className="fixed inset-0 lg:hidden flex flex-col bg-plum-mid"
             style={{ zIndex: 55 }}
           >
             <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-lav-700/20 blur-3xl pointer-events-none" />
             <div className="absolute bottom-1/4 left-0 w-64 h-64 rounded-full bg-gold-400/8 blur-3xl pointer-events-none" />
 
-            <div className="flex flex-col h-full px-8 pt-28 pb-10">
+            <div className="flex flex-col h-full px-6 sm:px-8 pt-6 pb-10">
+              <div className="flex items-center justify-end mb-6">
+                <motion.button
+                  type="button"
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.25, delay: 0.05 }}
+                  onClick={() => setMenuOpen(false)}
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/35 active:scale-95 transition-all cursor-pointer"
+                  aria-label="Κλείσιμο μενού"
+                >
+                  <X className="w-6 h-6" strokeWidth={2} aria-hidden />
+                </motion.button>
+              </div>
+
               <nav className="flex flex-col gap-0 flex-1">
                 {links.map((link, i) => (
                   <motion.div
@@ -210,13 +225,13 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex flex-col gap-5 border-t border-white/10 pt-8"
+                className="flex flex-col gap-6 border-t border-white/10 pt-8 mt-2"
               >
                 <LanguageSwitcher variant="mobile" />
                 <Link
                   href={lp("/contact")}
                   onClick={() => setMenuOpen(false)}
-                  className="flex-1 text-center py-4 rounded-2xl bg-lav-600 text-white font-semibold text-sm shadow-glow"
+                  className="w-full text-center py-4 rounded-2xl bg-lav-600 text-white font-semibold text-sm shadow-glow active:scale-[0.98] transition-transform"
                 >
                   {t("bookSession")}
                 </Link>

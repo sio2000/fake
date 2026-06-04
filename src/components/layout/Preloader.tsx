@@ -49,7 +49,7 @@ export default function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.9, ease: EASE_LUXURY }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-plum overflow-hidden"
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-plum-mid overflow-hidden"
           aria-live="polite"
           aria-busy={phase !== "exit"}
         >

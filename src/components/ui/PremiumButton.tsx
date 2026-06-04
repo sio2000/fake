@@ -31,7 +31,7 @@ export default function PremiumButton({
 
   const variants = {
     primary:
-      "bg-plum text-white shadow-strong hover:shadow-glow group",
+      "bg-lav-600 text-white shadow-strong hover:shadow-glow group",
     secondary:
       "bg-white/70 text-plum border border-plum/10 backdrop-blur-md hover:bg-white hover:border-lav-300 hover:shadow-soft",
     ghost:
@@ -47,8 +47,8 @@ export default function PremiumButton({
           className={cn(
             "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400",
             variant === "primary"
-              ? "bg-gradient-to-br from-lav-700 via-lav-600 to-lav-500"
-              : "bg-gradient-to-br from-gold-300 to-gold-400"
+              ? "bg-gradient-to-br from-lav-500 via-lav-400 to-lav-300"
+              : "bg-gradient-to-br from-gold-300 via-gold-400 to-kroke-400"
           )}
         />
       )}

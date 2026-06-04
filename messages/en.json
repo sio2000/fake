@@ -42,6 +42,18 @@
     "q6": "\"I lost opportunities because I couldn't express myself.\"",
     "scrollHint": "Keep scrolling"
   },
+  "dimitraVideos": {
+    "label": "Meet Dimitra",
+    "headline": "Introduction, advice & tips",
+    "body": "Short ideas and practical advice for more confident, natural communication — from your first introduction to useful everyday tips.",
+    "video1Title": "Introduction",
+    "video2Title": "Advice",
+    "video3Title": "Tips",
+    "episode": "Video {n}",
+    "play": "Play video",
+    "fullscreen": "Fullscreen",
+    "close": "Close"
+  },
   "philosophy": {
     "label": "Philosophy",
     "headline": "We don't teach.",

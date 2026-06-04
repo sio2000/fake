@@ -207,7 +207,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-32 md:py-40 px-6 relative overflow-hidden bg-dark-section">
+      <section className="legacy-palette py-32 md:py-40 px-6 relative overflow-hidden bg-dark-section">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-lav-700/22 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold-400/8 blur-3xl" />

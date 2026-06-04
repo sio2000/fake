@@ -24,7 +24,7 @@ export default function CommunicationSection() {
     <section className="relative py-36 px-6 overflow-hidden bg-dark-section">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-lav-800/30 blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-gold-400/6 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-gold-400/14 blur-3xl" />
         <div className="absolute inset-0 dot-grid opacity-[0.04]" />
       </div>
 
