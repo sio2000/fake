@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { isUploadMediaUrl } from "@/lib/upload-url";
-
 type Props = {
   src: string;
   alt: string;
@@ -12,37 +9,21 @@ type Props = {
   priority?: boolean;
 };
 
-/**
- * Uploaded resources are served from /api/uploads/... — use unoptimized/native
- * loading so Netlify does not break previews via the image optimizer.
- */
-export default function ResourceImage({ src, alt, className, fill, sizes, priority }: Props) {
-  const unoptimized = isUploadMediaUrl(src);
-
+/** Native img — reliable for /api/uploads/ on Netlify (no Next image optimizer). */
+export default function ResourceImage({ src, alt, className, fill }: Props) {
   if (fill) {
     return (
-      <Image
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
         src={src}
         alt={alt}
-        fill
-        unoptimized={unoptimized}
-        className={className}
-        sizes={sizes}
-        priority={priority}
+        className={`absolute inset-0 h-full w-full object-cover ${className ?? ""}`}
       />
     );
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={1200}
-      height={675}
-      unoptimized={unoptimized}
-      className={className}
-      sizes={sizes}
-      priority={priority}
-    />
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} className={className} />
   );
 }

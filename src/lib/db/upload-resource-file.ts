@@ -1,7 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { UPLOAD_API_PREFIX } from "@/lib/upload-url";
-import { filenameFromUploadUrl, useNetlifyBlobs } from "@/lib/db/upload-storage";
+import { filenameFromUploadUrl } from "@/lib/db/upload-storage";
+import { useNetlifyBlobs } from "@/lib/db/runtime-env";
 import { deleteUploadFromBlob, writeUploadToBlob } from "@/lib/db/upload-blob";
 
 function getLocalUploadDir() {

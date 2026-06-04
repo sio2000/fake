@@ -1,13 +1,9 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { getBlobStore } from "@/lib/db/netlify-store";
+import { isNetlifyRuntime, useNetlifyBlobs } from "@/lib/db/runtime-env";
 
-function isNetlifyRuntime() {
-  return (
-    process.env.NETLIFY === "true" ||
-    process.env.NETLIFY_DEV === "true" ||
-    Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME)
-  );
-}
+export { useNetlifyBlobs };
 
 function getFileDataDir() {
   if (isNetlifyRuntime()) {
@@ -16,14 +12,8 @@ function getFileDataDir() {
   return path.join(process.cwd(), "data");
 }
 
-export function useNetlifyBlobs() {
-  if (process.env.USE_FILE_STORAGE === "true") return false;
-  return isNetlifyRuntime();
-}
-
 async function getDataStore() {
-  const { getStore } = await import("@netlify/blobs");
-  return getStore({ name: "pouma-data", consistency: "strong" });
+  return getBlobStore("pouma-data");
 }
 
 async function ensureDataDir() {

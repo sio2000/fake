@@ -2,7 +2,8 @@ import { promises as fs } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
 import { readUploadFromBlob } from "@/lib/db/upload-blob";
-import { getTmpUploadDir, useNetlifyBlobs } from "@/lib/db/upload-storage";
+import { getTmpUploadDir } from "@/lib/db/upload-storage";
+import { useNetlifyBlobs } from "@/lib/db/runtime-env";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -44,6 +45,7 @@ export async function GET(
     try {
       const blob = await readUploadFromBlob(filename);
       if (blob) return fileResponse(blob.body, blob.contentType);
+      console.error("[uploads] blob miss:", filename);
     } catch (err) {
       console.error("[uploads] blob read failed:", filename, err);
     }

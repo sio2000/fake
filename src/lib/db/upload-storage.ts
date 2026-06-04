@@ -1,12 +1,19 @@
 import { UPLOAD_API_PREFIX } from "@/lib/upload-url";
-import { useNetlifyBlobs } from "@/lib/db/json-storage";
+import { getBlobStore } from "@/lib/db/netlify-store";
+import { useNetlifyBlobs } from "@/lib/db/runtime-env";
 import path from "path";
 
 export function getTmpUploadDir() {
   return path.join("/tmp", "pouma-uploads");
 }
 
+/** Blob key inside pouma-data (same store as resources.json) */
 export function uploadKeyFromFilename(filename: string) {
+  return `uploads/${filename}`;
+}
+
+/** Legacy key in separate pouma-uploads store */
+export function legacyUploadKeyFromFilename(filename: string) {
   return `resources/${filename}`;
 }
 
@@ -22,8 +29,11 @@ export function filenameFromUploadUrl(url?: string) {
 }
 
 export async function getUploadStore() {
-  const { getStore } = await import("@netlify/blobs");
-  return getStore({ name: "pouma-uploads", consistency: "strong" });
+  return getBlobStore("pouma-data");
+}
+
+export async function getLegacyUploadStore() {
+  return getBlobStore("pouma-uploads");
 }
 
 export function isBlobUploadUrl(url?: string) {

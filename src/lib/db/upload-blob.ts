@@ -1,6 +1,8 @@
 import {
   filenameFromUploadUrl,
+  getLegacyUploadStore,
   getUploadStore,
+  legacyUploadKeyFromFilename,
   uploadKeyFromFilename,
 } from "@/lib/db/upload-storage";
 
@@ -33,12 +35,11 @@ async function blobToBuffer(data: unknown): Promise<Buffer | null> {
   return null;
 }
 
-export async function readUploadFromBlob(
+async function readFromStore(
+  store: Awaited<ReturnType<typeof getUploadStore>>,
+  key: string,
   filename: string
 ): Promise<{ body: Buffer; contentType: string } | null> {
-  const store = await getUploadStore();
-  const key = uploadKeyFromFilename(filename);
-
   try {
     const withMeta = await store.getWithMetadata(key);
     if (withMeta?.data) {
@@ -54,16 +55,33 @@ export async function readUploadFromBlob(
   }
 
   try {
-    const raw = await store.get(key);
-    const body = await blobToBuffer(raw);
-    if (body?.length) {
-      return { body, contentType: guessContentType(filename) };
+    const raw = await store.get(key, { type: "arrayBuffer" });
+    if (raw) {
+      const body = await blobToBuffer(raw);
+      if (body?.length) {
+        return { body, contentType: guessContentType(filename) };
+      }
     }
   } catch {
     return null;
   }
 
   return null;
+}
+
+export async function readUploadFromBlob(
+  filename: string
+): Promise<{ body: Buffer; contentType: string } | null> {
+  const primary = await getUploadStore();
+  const fromPrimary = await readFromStore(primary, uploadKeyFromFilename(filename), filename);
+  if (fromPrimary) return fromPrimary;
+
+  try {
+    const legacy = await getLegacyUploadStore();
+    return await readFromStore(legacy, legacyUploadKeyFromFilename(filename), filename);
+  } catch {
+    return null;
+  }
 }
 
 export async function writeUploadToBlob(
@@ -76,17 +94,34 @@ export async function writeUploadToBlob(
     buffer.byteOffset,
     buffer.byteOffset + buffer.byteLength
   ) as ArrayBuffer;
-  await store.set(uploadKeyFromFilename(filename), arrayBuffer, {
+
+  const key = uploadKeyFromFilename(filename);
+  await store.set(key, arrayBuffer, {
     metadata: { contentType },
   });
+
+  const verify = await readFromStore(store, key, filename);
+  if (!verify?.body?.length) {
+    throw new Error("Η αποθήκευση του αρχείου απέτυχε — δοκίμασε ξανά.");
+  }
 }
 
 export async function deleteUploadFromBlob(fileUrl?: string): Promise<void> {
   const name = filenameFromUploadUrl(fileUrl);
   if (!name) return;
+
+  const keys = [uploadKeyFromFilename(name), legacyUploadKeyFromFilename(name)];
+
   try {
-    const store = await getUploadStore();
-    await store.delete(uploadKeyFromFilename(name));
+    const primary = await getUploadStore();
+    await Promise.all(keys.map((key) => primary.delete(key).catch(() => undefined)));
+  } catch {
+    // ignore
+  }
+
+  try {
+    const legacy = await getLegacyUploadStore();
+    await legacy.delete(legacyUploadKeyFromFilename(name)).catch(() => undefined);
   } catch {
     // ignore
   }
