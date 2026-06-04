@@ -11,13 +11,14 @@ import AdminPagination from "@/components/admin/AdminPagination";
 import { paginate } from "@/lib/pagination";
 import { normalizeResourceType } from "@/lib/resource-types";
 
-type Section = "overview" | "resources" | "contacts";
+type Section = "overview" | "resources" | "contacts" | "workshops";
 type ResourceFilter = "all" | ResourceType;
 
-const NAV_ITEMS: { id: Section; label: string }[] = [
+const NAV_ITEMS: { id: Section; label: string; soon?: boolean }[] = [
   { id: "overview", label: "Επισκόπηση" },
   { id: "resources", label: "Η τάξη μας" },
   { id: "contacts", label: "Αιτήματα" },
+  { id: "workshops", label: "Workshops", soon: true },
 ];
 
 const TYPE_LABELS: Record<ResourceType, string> = {
@@ -301,6 +302,17 @@ export default function AdminDashboard() {
                     }`}
                   >
                     {newCount}
+                  </span>
+                )}
+                {item.soon && (
+                  <span
+                    className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md ${
+                      section === item.id
+                        ? "bg-white/20 text-white/90"
+                        : "bg-gold-400/15 text-gold-500 border border-gold-400/25"
+                    }`}
+                  >
+                    Σύντομα
                   </span>
                 )}
               </span>
@@ -754,6 +766,53 @@ export default function AdminDashboard() {
                 />
                 </div>
               )}
+            </motion.div>
+          )}
+
+          {section === "workshops" && (
+            <motion.div
+              key="workshops"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="max-w-2xl"
+            >
+              <h1 className="text-2xl font-display text-plum mb-2">Workshops</h1>
+              <p className="text-plum/45 text-sm mb-8">
+                Εργαστήρια & ειδικές συνεδρίες της Δήμητρας — διαχείριση από τον πίνακα
+              </p>
+
+              <div className="relative overflow-hidden rounded-3xl border border-lav-100 bg-white shadow-soft p-10 md:p-14 text-center">
+                <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-lav-100/80 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-gold-400/10 blur-3xl pointer-events-none" />
+
+                <div className="relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-lav-100 to-lav-200 border border-lav-200 flex items-center justify-center mx-auto mb-6 text-2xl">
+                    ✦
+                  </div>
+                  <p className="text-[11px] font-bold text-lav-600 uppercase tracking-[0.22em] mb-4">
+                    Υπό κατασκευή
+                  </p>
+                  <h2 className="font-display text-2xl md:text-3xl text-plum mb-4 leading-snug">
+                    Το εργαλείο Workshops είναι σε εξέλιξη
+                  </h2>
+                  <p className="text-plum/50 text-sm md:text-base leading-relaxed max-w-md mx-auto mb-8">
+                    Σύντομα θα μπορείς να δημοσιεύεις, να επεξεργάζεσαι και να διαχειρίζεσαι τα workshops της
+                    καθηγήτριας απευθείας από εδώ — ημερομηνίες, θέσεις, περιγραφές και υλικό συμμετεχόντων.
+                  </p>
+                  <div className="inline-flex flex-col sm:flex-row items-center gap-3 text-xs text-plum/40">
+                    <span className="px-4 py-2 rounded-full bg-lav-50 border border-lav-100">
+                      Προγραμματισμός sessions
+                    </span>
+                    <span className="px-4 py-2 rounded-full bg-lav-50 border border-lav-100">
+                      Λίστα ενδιαφερόμενων
+                    </span>
+                    <span className="px-4 py-2 rounded-full bg-lav-50 border border-lav-100">
+                      Υλικό workshop
+                    </span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
