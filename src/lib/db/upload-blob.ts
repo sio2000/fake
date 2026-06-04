@@ -100,10 +100,14 @@ export async function writeUploadToBlob(
     metadata: { contentType },
   });
 
-  const verify = await readFromStore(store, key, filename);
-  if (!verify?.body?.length) {
-    throw new Error("Η αποθήκευση του αρχείου απέτυχε — δοκίμασε ξανά.");
+  // Eventual consistency: brief retry before failing
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const verify = await readFromStore(store, key, filename);
+    if (verify?.body?.length) return;
+    await new Promise((r) => setTimeout(r, 150 * (attempt + 1)));
   }
+
+  throw new Error("Η αποθήκευση του αρχείου απέτυχε — δοκίμασε ξανά.");
 }
 
 export async function deleteUploadFromBlob(fileUrl?: string): Promise<void> {

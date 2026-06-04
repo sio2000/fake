@@ -3,6 +3,7 @@ type BlobsContext = {
   token?: string;
   apiURL?: string;
   edgeURL?: string;
+  uncachedEdgeURL?: string;
 };
 
 function parseBlobsContext(): BlobsContext {
@@ -15,23 +16,48 @@ function parseBlobsContext(): BlobsContext {
   }
 }
 
-/** Shared Netlify Blobs store — same as resources.json / contacts.json */
+/**
+ * Netlify Blobs store. Uses "eventual" consistency by default — "strong" requires
+ * uncachedEdgeURL when edgeURL is set, which breaks on some Next.js runtimes.
+ */
 export async function getBlobStore(name = "pouma-data") {
   const { getStore } = await import("@netlify/blobs");
   const ctx = parseBlobsContext();
   const siteID = process.env.NETLIFY_SITE_ID ?? ctx.siteID;
   const token = process.env.NETLIFY_BLOBS_TOKEN ?? ctx.token;
 
-  if (siteID && token) {
+  // API access: strong consistency without edge URLs
+  if (siteID && token && ctx.apiURL) {
     return getStore({
       name,
       siteID,
       token,
       apiURL: ctx.apiURL,
-      edgeURL: ctx.edgeURL,
       consistency: "strong",
     });
   }
 
-  return getStore({ name, consistency: "strong" });
+  // Edge access with explicit strong only when uncachedEdgeURL exists
+  if (siteID && token && ctx.uncachedEdgeURL) {
+    return getStore({
+      name,
+      siteID,
+      token,
+      edgeURL: ctx.edgeURL,
+      uncachedEdgeURL: ctx.uncachedEdgeURL,
+      consistency: "strong",
+    });
+  }
+
+  if (siteID && token) {
+    return getStore({
+      name,
+      siteID,
+      token,
+      consistency: "eventual",
+    });
+  }
+
+  // Netlify-injected environment (preferred on production)
+  return getStore({ name, consistency: "eventual" });
 }
