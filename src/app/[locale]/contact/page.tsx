@@ -46,7 +46,7 @@ export default function ContactPage() {
 
   return (
     <div className="bg-ivory min-h-screen">
-      <AtmosphericBackground variant="hero" className="pt-36 pb-16 md:pb-20 px-6">
+      <AtmosphericBackground variant="hero" className="pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
         <div ref={heroRef} className="max-w-3xl mx-auto text-center relative z-10">
           <SectionLabel variant="light">{t("hero.label")}</SectionLabel>
 
@@ -55,7 +55,7 @@ export default function ContactPage() {
               initial={{ y: 70, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.1, ease: EASE_LUXURY }}
-              className="font-display font-light text-5xl sm:text-6xl md:text-7xl text-plum leading-tight tracking-tight"
+              className="font-display font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-plum leading-tight tracking-tight"
             >
               {t("hero.headline")}
             </motion.h1>
@@ -65,7 +65,7 @@ export default function ContactPage() {
               initial={{ y: 70, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.18, ease: EASE_LUXURY }}
-              className="font-display font-light text-5xl sm:text-6xl md:text-7xl text-gradient leading-tight tracking-tight"
+              className="font-display font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gradient leading-tight tracking-tight"
             >
               {t("hero.headline2")}
             </motion.h1>
@@ -82,7 +82,7 @@ export default function ContactPage() {
         </div>
       </AtmosphericBackground>
 
-      <section className="pb-28 md:pb-36 px-6 pt-6 md:pt-10">
+      <section className="pb-16 sm:pb-20 md:pb-28 lg:pb-36 px-4 sm:px-6 pt-4 sm:pt-6 md:pt-10">
         <div
           ref={formRef}
           className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start"
@@ -97,7 +97,7 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="h-full min-h-[420px] flex flex-col items-center justify-center bg-white rounded-3xl border border-lav-100 p-12 md:p-14 text-center shadow-medium"
+                className="h-full max-lg:min-h-[280px] min-h-[420px] flex flex-col items-center justify-center bg-white rounded-3xl border border-lav-100 p-8 sm:p-10 md:p-12 lg:p-14 text-center shadow-medium"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -114,7 +114,7 @@ export default function ContactPage() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-white rounded-3xl border border-lav-100/80 p-8 md:p-10 lg:p-12 shadow-medium"
+                className="bg-white rounded-3xl border border-lav-100/80 p-6 sm:p-8 md:p-10 lg:p-12 shadow-medium"
               >
                 <p className="text-[11px] font-bold text-plum/30 uppercase tracking-[0.2em] mb-6">
                   {locale === "el" ? "Φόρμα επικοινωνίας" : "Contact form"}

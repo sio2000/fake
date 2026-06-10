@@ -31,7 +31,7 @@ export default function PumaStory() {
           initial={{ opacity: 0, x: 80 }}
           animate={inView ? { opacity: 0.035, x: 0 } : {}}
           transition={{ duration: 1.8, delay: 0.3 }}
-          className="font-display text-[20rem] text-white leading-none select-none font-bold"
+          className="font-display text-[8rem] sm:text-[12rem] lg:text-[20rem] text-white leading-none select-none font-bold"
         >
           P
         </motion.span>
@@ -89,7 +89,7 @@ export default function PumaStory() {
         >
           <div className="absolute inset-0 rounded-3xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(223,184,74,0.22)" }} />
           <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-400 via-gold-300/70 to-transparent" />
-          <div className="relative px-10 py-8">
+          <div className="relative px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8">
             <span className="absolute top-3 left-5 font-display text-6xl leading-none" style={{ color: "rgba(223,184,74,0.25)" }}>"</span>
             <div className="relative space-y-4 pt-4 pl-6">
               <p className="font-display italic text-xl md:text-2xl leading-snug text-gold-300">{t("quote1")}</p>

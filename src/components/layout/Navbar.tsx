@@ -78,8 +78,8 @@ export default function Navbar() {
         transition={{ duration: 0.9, ease: EASE_LUXURY }}
         className="fixed top-0 left-0 right-0 z-50 h-[4.5rem]"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
-          <Link href={lp("/")} onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial sm:flex-shrink-0 max-w-[calc(100%-3.5rem)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-full flex items-center justify-between">
+          <Link href={lp("/")} onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial sm:flex-shrink-0 max-w-[calc(100%-3.25rem)]">
             <motion.div
               whileHover={{ scale: 1.05, rotate: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -145,7 +145,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden relative w-11 h-11 flex flex-col items-center justify-center gap-1.5 cursor-pointer rounded-xl hover:bg-lav-50/80 transition-colors"
+            className="lg:hidden relative w-11 h-11 min-w-11 min-h-11 flex flex-col items-center justify-center gap-1.5 cursor-pointer rounded-xl hover:bg-lav-50/80 active:bg-lav-100/80 transition-colors touch-manipulation"
             aria-label="Toggle menu"
             style={{ zIndex: 60 }}
           >

@@ -100,7 +100,7 @@ function VideoModal({
             <button
               type="button"
               onClick={() => void enterFullscreen()}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-lav-100 bg-lav-700/40 hover:bg-lav-600/50 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 sm:py-1.5 text-xs font-semibold text-lav-100 bg-lav-700/40 hover:bg-lav-600/50 transition-colors cursor-pointer min-h-11 sm:min-h-0"
               aria-label={fullscreenLabel}
             >
               <FullscreenIcon className="w-4 h-4" />
@@ -109,7 +109,7 @@ function VideoModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-full w-9 h-9 flex items-center justify-center text-lav-100/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              className="rounded-full min-w-11 min-h-11 w-11 h-11 flex items-center justify-center text-lav-100/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               aria-label={closeLabel}
             >
               <span className="text-xl leading-none">&times;</span>
@@ -191,9 +191,9 @@ export default function DimitraVideosSection() {
               transition={{ duration: 0.85, delay: 0.12 + i * 0.1, ease: EASE_LUXURY }}
               onClick={() => setActive(video)}
               className={cn(
-                "group text-left w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-lav-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lav-50 rounded-[1.35rem]",
+                "group text-left w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-lav-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lav-50 rounded-[1.35rem] max-lg:rotate-0",
                 CARD_TILT[i % CARD_TILT.length],
-                "hover:rotate-0 hover:-translate-y-1 transition-transform duration-500"
+                "lg:hover:rotate-0 lg:hover:-translate-y-1 transition-transform duration-500"
               )}
               aria-label={`${t("play")}: ${titles[video.id]}`}
             >

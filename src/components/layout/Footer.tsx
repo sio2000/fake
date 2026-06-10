@@ -61,8 +61,8 @@ export default function Footer() {
         <div className="absolute bottom-0 right-1/3 w-[450px] h-[220px] rounded-full bg-gold-400/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="border-t border-white/8 pt-20 pb-14">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="border-t border-white/8 pt-12 sm:pt-16 lg:pt-20 pb-10 sm:pb-12 lg:pb-14">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-start">
             {/* Brand */}
             <div className="md:pr-4">

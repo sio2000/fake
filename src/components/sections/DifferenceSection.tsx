@@ -81,14 +81,14 @@ export default function DifferenceSection() {
                   }`}
                 />
                 <span
-                  className={`absolute -bottom-3 -right-1 font-display text-8xl font-bold select-none leading-none pointer-events-none transition-colors duration-500 ${
+                  className={`absolute -bottom-3 -right-1 font-display text-6xl lg:text-8xl font-bold select-none leading-none pointer-events-none transition-colors duration-500 ${
                     isOpen ? "text-lav-200/70" : "text-lav-100/80 group-hover:text-lav-200/60"
                   }`}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                <div className="relative z-10 p-8">
+                <div className="relative z-10 p-5 sm:p-6 lg:p-8">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-4 min-w-0">
                       <div

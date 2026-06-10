@@ -37,6 +37,28 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Preloader: hide site content until first visit animation completes */
+html.preloader-pending #site-content {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html.preloader-pending #preloader-static {
+  display: flex;
+}
+
+html.preloader-ready #preloader-static {
+  display: none;
+}
+
+html.preloader-ready #site-content {
+  visibility: visible;
+}
+
+#preloader-static {
+  display: none;
+}
+
 body {
   background: var(--color-ivory);
   color: var(--color-plum);
@@ -252,6 +274,29 @@ body {
   border-color: var(--color-lav-400);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-lav-400) 28%, transparent);
   background: #fff;
+}
+
+@media (max-width: 1023px) {
+  .input-premium {
+    font-size: 1rem;
+    min-height: 3rem;
+  }
+}
+
+/* Mobile touch targets & performance */
+@media (max-width: 1023px) {
+  .touch-target {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
+
+  .reduce-motion-mobile *,
+  .reduce-motion-mobile *::before,
+  .reduce-motion-mobile *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Pre–rebrand palette for selected sections only */

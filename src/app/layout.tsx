@@ -1,7 +1,10 @@
 import "./globals.css";
 import { rootMetadata } from "@/lib/seo";
+import { PRELOADER_STORAGE_KEY } from "@/lib/preloader";
 
 export const metadata = rootMetadata;
+
+const preloaderInitScript = `(function(){try{var k="${PRELOADER_STORAGE_KEY}";if(sessionStorage.getItem(k)==="1"){document.documentElement.classList.add("preloader-ready");}else{document.documentElement.classList.add("preloader-pending");document.documentElement.style.overflow="hidden";}}catch(e){document.documentElement.classList.add("preloader-pending");}})();`;
 
 export default function RootLayout({
   children,
@@ -11,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="el" className="h-full">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: preloaderInitScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -18,7 +22,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <div
+          id="preloader-static"
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-plum-mid"
+          aria-hidden
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/finallogo.png"
+            alt=""
+            width={112}
+            height={112}
+            className="w-24 h-24 sm:w-28 sm:h-28 object-contain drop-shadow-[0_0_30px_rgba(176,154,232,0.55)]"
+          />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

@@ -23,11 +23,11 @@ export default function CtaSection() {
             <div className="absolute inset-0 dot-grid opacity-[0.04]" />
           </div>
 
-          <div className="relative z-10 text-center py-16 md:py-20 px-8 md:px-16">
+          <div className="relative z-10 text-center py-10 sm:py-12 md:py-16 lg:py-20 px-5 sm:px-8 md:px-16">
             <motion.div
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
-              className="inline-flex items-center gap-2 mb-8"
+              className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-6 sm:mb-8 max-w-full px-2"
             >
               <div className="w-6 h-px bg-lav-400" />
               <span className="text-[11px] font-bold text-lav-300 tracking-[0.22em] uppercase">The Pouma Academy</span>
@@ -39,7 +39,7 @@ export default function CtaSection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl text-white leading-tight tracking-tight"
+                className="font-display font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight tracking-tight"
               >
                 {t("headline")}
               </motion.h2>
@@ -49,7 +49,7 @@ export default function CtaSection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl text-gold leading-tight tracking-tight"
+                className="font-display font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gold leading-tight tracking-tight"
               >
                 {t("headline2")}
               </motion.h2>

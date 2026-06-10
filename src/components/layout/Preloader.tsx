@@ -1,11 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { EASE_LUXURY } from "@/lib/motion";
-
-const STORAGE_KEY = "pouma-preloader-seen";
+import {
+  hasSeenPreloader,
+  markPreloaderSeen,
+  setPreloaderPending,
+  setPreloaderReady,
+} from "@/lib/preloader";
 
 export default function Preloader() {
   const t = useTranslations("preloader");
@@ -14,12 +18,22 @@ export default function Preloader() {
   const [messageIndex, setMessageIndex] = useState(0);
   const [phase, setPhase] = useState<"logo" | "message" | "exit">("logo");
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const seen = sessionStorage.getItem(STORAGE_KEY);
-    if (seen) return;
+  useLayoutEffect(() => {
+    const staticShell = document.getElementById("preloader-static");
+    if (staticShell) staticShell.remove();
+
+    if (hasSeenPreloader()) {
+      setPreloaderReady();
+      setVisible(false);
+      return;
+    }
+
+    setPreloaderPending();
     setVisible(true);
-    document.body.style.overflow = "hidden";
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
 
     const msgTimer = setTimeout(() => setPhase("message"), 900);
     const cycle = setInterval(() => {
@@ -27,9 +41,9 @@ export default function Preloader() {
     }, 2200);
     const exitTimer = setTimeout(() => setPhase("exit"), 4200);
     const hideTimer = setTimeout(() => {
+      markPreloaderSeen();
+      setPreloaderReady();
       setVisible(false);
-      sessionStorage.setItem(STORAGE_KEY, "1");
-      document.body.style.overflow = "";
     }, 5200);
 
     return () => {
@@ -37,9 +51,8 @@ export default function Preloader() {
       clearTimeout(exitTimer);
       clearTimeout(hideTimer);
       clearInterval(cycle);
-      document.body.style.overflow = "";
     };
-  }, [messages.length]);
+  }, [visible, messages.length]);
 
   return (
     <AnimatePresence>
@@ -53,11 +66,11 @@ export default function Preloader() {
           aria-live="polite"
           aria-busy={phase !== "exit"}
         >
-          <div className="absolute inset-0 pointer-events-none" aria-hidden>
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-lav-700/30 blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-gold-400/12 blur-3xl" />
+          <div className="absolute inset-0 pointer-events-none max-lg:[&_*]:!animate-none" aria-hidden>
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-lav-700/30 blur-3xl max-lg:w-64 max-lg:h-64" />
+            <div className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-gold-400/12 blur-3xl max-lg:w-48 max-lg:h-48" />
             <motion.div
-              className="absolute inset-0 opacity-30"
+              className="absolute inset-0 opacity-30 max-lg:hidden"
               style={{
                 background:
                   "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(176,154,232,0.2) 0%, transparent 70%)",
@@ -75,10 +88,10 @@ export default function Preloader() {
                 : { scale: 1, opacity: 1, filter: "blur(0px)" }
             }
             transition={{ duration: 1, ease: EASE_LUXURY }}
-            className="relative z-10 flex flex-col items-center text-center px-8"
+            className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8"
           >
             <motion.div
-              className="relative w-28 h-28 mb-10"
+              className="relative w-24 h-24 sm:w-28 sm:h-28 mb-8 sm:mb-10 max-lg:animate-none"
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -93,7 +106,7 @@ export default function Preloader() {
             </motion.div>
 
             <motion.p
-              className="font-display text-xs tracking-[0.35em] uppercase text-lav-300/80 mb-6"
+              className="font-display text-xs tracking-[0.35em] uppercase text-lav-300/80 mb-5 sm:mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -101,7 +114,7 @@ export default function Preloader() {
               The Pouma Academy
             </motion.p>
 
-            <div className="h-16 flex items-center justify-center max-w-md">
+            <div className="h-14 sm:h-16 flex items-center justify-center max-w-md px-2">
               <AnimatePresence mode="wait">
                 {phase !== "logo" && (
                   <motion.p
@@ -110,7 +123,7 @@ export default function Preloader() {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
                     transition={{ duration: 0.75, ease: EASE_LUXURY }}
-                    className="font-display italic text-xl md:text-2xl text-white/90 leading-snug"
+                    className="font-display italic text-lg sm:text-xl md:text-2xl text-white/90 leading-snug"
                   >
                     {messages[messageIndex]}
                   </motion.p>
@@ -119,13 +132,13 @@ export default function Preloader() {
             </div>
 
             <motion.div
-              className="mt-14 h-px w-32 bg-gradient-to-r from-transparent via-lav-400/50 to-transparent overflow-hidden"
+              className="mt-10 sm:mt-14 h-px w-28 sm:w-32 bg-gradient-to-r from-transparent via-lav-400/50 to-transparent overflow-hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
               <motion.div
-                className="h-full w-1/2 bg-gradient-to-r from-transparent via-gold-400 to-transparent"
+                className="h-full w-1/2 bg-gradient-to-r from-transparent via-gold-400 to-transparent max-lg:hidden"
                 animate={{ x: ["-100%", "200%"] }}
                 transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
               />

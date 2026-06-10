@@ -34,7 +34,7 @@ export default function AboutPage() {
 
   return (
     <div className="bg-ivory min-h-screen">
-      <AtmosphericBackground variant="hero" className="pt-36 pb-28 px-6">
+      <AtmosphericBackground variant="hero" className="pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-28 px-4 sm:px-6">
         <div ref={heroRef} className="max-w-5xl mx-auto relative z-10">
           <SectionLabel variant="ornament">{t("hero.label")}</SectionLabel>
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
               initial={{ y: 90, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1.15, delay: 0.1, ease: EASE_LUXURY }}
-              className="text-display-xl text-5xl md:text-6xl lg:text-7xl text-plum"
+              className="text-display-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-plum"
             >
               {t("hero.headline")}
             </motion.h1>
@@ -53,7 +53,7 @@ export default function AboutPage() {
               initial={{ y: 90, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1.15, delay: 0.18, ease: EASE_LUXURY }}
-              className="text-display-xl text-5xl md:text-6xl lg:text-7xl text-gradient"
+              className="text-display-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gradient"
             >
               {t("hero.headline2")}
             </motion.h1>
@@ -70,7 +70,7 @@ export default function AboutPage() {
         </div>
       </AtmosphericBackground>
 
-      <section ref={sRef} className="py-28 md:py-36 px-6 bg-section-elevated overflow-hidden">
+      <section ref={sRef} className="py-16 sm:py-20 md:py-28 lg:py-36 px-4 sm:px-6 bg-section-elevated overflow-hidden">
         <div
           ref={storyRef}
           className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
@@ -120,7 +120,7 @@ export default function AboutPage() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-6 -right-2 lg:right-4 glass rounded-2xl px-6 py-4 shadow-medium"
+                className="max-lg:relative max-lg:mt-4 max-lg:inline-block max-lg:mx-2 lg:absolute lg:-bottom-6 lg:-right-2 xl:right-4 glass rounded-2xl px-6 py-4 shadow-medium"
               >
                 <p className="text-eyebrow text-plum/35 mb-1">
                   {locale === "el" ? "Εμπειρία" : "Experience"}
@@ -131,7 +131,7 @@ export default function AboutPage() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -top-5 -left-2 glass rounded-2xl px-5 py-3 shadow-medium border border-gold-200/40"
+                className="max-lg:relative max-lg:mt-3 max-lg:inline-block max-lg:mx-2 lg:absolute lg:-top-5 lg:-left-2 glass rounded-2xl px-5 py-3 shadow-medium border border-gold-200/40"
               >
                 <p className="text-eyebrow text-plum/35 mb-1">
                   {locale === "el" ? "Μεταμορφώσεις" : "Transformations"}
@@ -143,7 +143,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative py-28 md:py-40 px-6 overflow-hidden">
+      <section className="relative py-16 sm:py-20 md:py-28 lg:py-40 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-lav-100/60 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-gold-200/25 blur-3xl" />
@@ -227,7 +227,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-28 px-6 text-center bg-ivory">
+      <section className="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 text-center bg-ivory">
         <PremiumButton href={`/${locale}/contact`} variant="primary" size="lg">
           {ctaT("primary")}
         </PremiumButton>

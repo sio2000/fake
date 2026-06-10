@@ -75,7 +75,7 @@ export default function SocialLinks({ variant = "footer", className, labels }: S
               variant === "light" &&
                 "px-4 py-3 border border-lav-100 bg-white shadow-soft hover:border-lav-300 hover:shadow-medium",
               isContact &&
-                "px-5 py-3.5 border border-lav-100 bg-white shadow-soft hover:border-lav-400 hover:shadow-medium min-w-[140px] justify-center"
+                "px-5 py-3.5 border border-lav-100 bg-white shadow-soft hover:border-lav-400 hover:shadow-medium min-h-11 max-md:min-w-0 max-md:flex-1 max-md:basis-[calc(50%-0.375rem)] lg:min-w-[140px] justify-center"
             )}
           >
             <span

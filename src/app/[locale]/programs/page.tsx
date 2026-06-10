@@ -123,7 +123,7 @@ function JourneyDetail({ pathKey }: { pathKey: PathKey }) {
       transition={{ duration: 0.55, ease: EASE_LUXURY }}
       className="lg:sticky lg:top-28"
     >
-      <div className="rounded-[2rem] overflow-hidden shadow-strong relative bg-dark-section min-h-[520px]">
+      <div className="rounded-[2rem] overflow-hidden shadow-strong relative bg-dark-section max-lg:min-h-0 min-h-[520px]">
         <div className={`absolute inset-0 bg-gradient-to-br ${meta.accent} opacity-[0.07]`} />
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-lav-700/28 blur-3xl" />
@@ -131,7 +131,7 @@ function JourneyDetail({ pathKey }: { pathKey: PathKey }) {
           <div className="absolute inset-0 dot-grid opacity-[0.05]" />
         </div>
 
-        <div className="relative z-10 p-10 md:p-12 flex flex-col h-full">
+        <div className="relative z-10 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col h-full">
           <span
             className={`inline-block text-eyebrow px-3 py-1.5 rounded-full mb-6 w-fit ${
               isPath3
@@ -237,7 +237,7 @@ export default function ProgramsPage() {
 
   return (
     <div className="bg-ivory min-h-screen">
-      <AtmosphericBackground variant="hero" className="pt-36 pb-24 px-6">
+      <AtmosphericBackground variant="hero" className="pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 px-4 sm:px-6">
         <div ref={heroRef} className="max-w-4xl mx-auto text-center relative z-10">
           <SectionLabel variant="light" delay={0}>
             {t("hero.label")}
@@ -248,7 +248,7 @@ export default function ProgramsPage() {
               initial={{ y: 80, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1.1, delay: 0.1, ease: EASE_LUXURY }}
-              className="text-display-xl text-6xl md:text-7xl lg:text-8xl text-plum"
+              className="text-display-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-plum"
             >
               {t("hero.headline")}
             </motion.h1>
@@ -258,7 +258,7 @@ export default function ProgramsPage() {
               initial={{ y: 80, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1.1, delay: 0.18, ease: EASE_LUXURY }}
-              className="text-display-xl text-6xl md:text-7xl lg:text-8xl text-gradient"
+              className="text-display-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-gradient"
             >
               {t("hero.headline2")}
             </motion.h1>
@@ -333,7 +333,7 @@ export default function ProgramsPage() {
               <div className="absolute inset-0 dot-grid opacity-[0.04]" />
             </div>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 p-10 md:p-14 items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 sm:gap-10 lg:gap-14 p-6 sm:p-8 md:p-10 lg:p-14 items-center">
               <div className="text-center lg:text-left">
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-300 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
                   {t("cta.badge")}

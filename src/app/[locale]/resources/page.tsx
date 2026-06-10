@@ -131,7 +131,7 @@ export default function ResourcesPage() {
 
   return (
     <div className="bg-ivory min-h-screen">
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-warm-mesh">
+      <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-14 sm:pb-16 lg:pb-20 px-4 sm:px-6 overflow-hidden bg-warm-mesh">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-1/4 w-[480px] h-[400px] rounded-full bg-lav-200/25 blur-3xl" />
           <div className="absolute bottom-0 left-1/5 w-[320px] h-[280px] rounded-full bg-gold-400/8 blur-3xl" />
@@ -152,7 +152,7 @@ export default function ResourcesPage() {
               initial={{ y: 70, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.1, ease: EASE_LUXURY }}
-              className="font-display font-light text-5xl md:text-6xl text-plum leading-tight tracking-tight"
+              className="font-display font-light text-4xl sm:text-5xl md:text-6xl text-plum leading-tight tracking-tight"
             >
               {t("hero.headline")}
             </motion.h1>
@@ -162,7 +162,7 @@ export default function ResourcesPage() {
               initial={{ y: 70, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.18, ease: EASE_LUXURY }}
-              className="font-display font-light text-5xl md:text-6xl text-gradient leading-tight tracking-tight"
+              className="font-display font-light text-4xl sm:text-5xl md:text-6xl text-gradient leading-tight tracking-tight"
             >
               {t("hero.headline2")}
             </motion.h1>
@@ -210,7 +210,7 @@ export default function ResourcesPage() {
                   />
                 </div>
               </div>
-              <p className="text-sm text-plum/45 font-light whitespace-nowrap lg:pb-3">
+              <p className="text-sm text-plum/45 font-light max-lg:whitespace-normal whitespace-nowrap lg:pb-3">
                 <span className="font-semibold text-lav-600 tabular-nums">{filtered.length}</span>{" "}
                 {t("results")}
               </p>

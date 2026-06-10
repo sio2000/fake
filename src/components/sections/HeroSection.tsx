@@ -38,8 +38,21 @@ export default function HeroSection() {
       mx.set(e.clientX / window.innerWidth - 0.5);
       my.set(e.clientY / window.innerHeight - 0.5);
     };
+    const mq = window.matchMedia("(min-width: 1024px)");
+    if (!mq.matches) return;
     window.addEventListener("mousemove", fn, { passive: true });
-    return () => window.removeEventListener("mousemove", fn);
+    const onChange = () => {
+      if (!mq.matches) {
+        mx.set(0);
+        my.set(0);
+        window.removeEventListener("mousemove", fn);
+      }
+    };
+    mq.addEventListener("change", onChange);
+    return () => {
+      window.removeEventListener("mousemove", fn);
+      mq.removeEventListener("change", onChange);
+    };
   }, [mx, my]);
 
   const lines = [t("headline1"), t("headline2"), t("headline3")];
@@ -69,7 +82,7 @@ export default function HeroSection() {
 
         <motion.div
           style={{ x: orbX, y: orbY }}
-          className="absolute -top-48 -left-48 w-[760px] h-[760px] rounded-full"
+          className="absolute -top-48 -left-48 w-[760px] h-[760px] rounded-full max-lg:scale-[0.55] max-lg:-top-32 max-lg:-left-32"
           animate={{ opacity: [0.4, 0.72, 0.4] }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -78,7 +91,7 @@ export default function HeroSection() {
 
         <motion.div
           style={{ x: orbX2, y: orbY2 }}
-          className="absolute -bottom-44 -right-24 w-[580px] h-[580px] rounded-full"
+          className="absolute -bottom-44 -right-24 w-[580px] h-[580px] rounded-full max-lg:scale-[0.55] max-lg:-bottom-28 max-lg:-right-16"
           animate={{ opacity: [0.15, 0.38, 0.15] }}
           transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         >
@@ -121,7 +134,7 @@ export default function HeroSection() {
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity, scale }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-28 pb-14"
+        className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-24 sm:pt-28 pb-10 sm:pb-14"
       >
         <motion.p
           initial={{ opacity: 0, y: -10 }}

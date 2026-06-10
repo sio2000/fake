@@ -24,7 +24,7 @@ export default function PersonalizationSection() {
       <div className="absolute inset-0 pointer-events-none dot-grid opacity-[0.018]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -40,7 +40,7 @@ export default function PersonalizationSection() {
                   <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-lav-700/30 blur-2xl" />
                   <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-gold-400/8 blur-2xl" />
                 </div>
-                <div className="relative z-10 p-10 flex flex-col justify-between h-full" style={{ minHeight: 360 }}>
+                <div className="relative z-10 p-6 sm:p-8 lg:p-10 flex flex-col justify-between h-full" style={{ minHeight: 360 }}>
                   <div>
                     <div className="text-[10px] font-bold text-lav-300 tracking-[0.22em] uppercase mb-4">
                       {t("cardLabel")}
@@ -71,7 +71,7 @@ export default function PersonalizationSection() {
               <motion.div
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-5 -right-5 glass rounded-2xl px-5 py-3 shadow-medium border border-lav-200/50"
+                className="absolute max-lg:static max-lg:mt-4 max-lg:mx-auto max-lg:w-fit max-lg:[animation:none] lg:-top-5 lg:-right-5 glass rounded-2xl px-5 py-3 shadow-medium border border-lav-200/50"
               >
                 <div className="text-[10px] font-bold text-plum/35 uppercase tracking-widest mb-1">
                   {t("groupSizeLabel")}
@@ -96,7 +96,7 @@ export default function PersonalizationSection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl text-plum leading-[1.03] tracking-tight"
+                className="font-display font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-plum leading-[1.03] tracking-tight"
               >
                 {t("headline")}
               </motion.h2>
@@ -106,7 +106,7 @@ export default function PersonalizationSection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl text-gradient leading-[1.03] tracking-tight"
+                className="font-display font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gradient leading-[1.03] tracking-tight"
               >
                 {t("headline2")}
               </motion.h2>

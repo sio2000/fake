@@ -29,7 +29,7 @@ function NavArrow({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="absolute top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full glass border border-lav-200/60 shadow-medium flex items-center justify-center text-plum/70 hover:text-lav-600 hover:border-lav-400 hover:shadow-glow transition-all duration-300 cursor-pointer"
+      className="absolute top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full glass border border-lav-200/60 shadow-medium flex items-center justify-center text-plum/70 hover:text-lav-600 hover:border-lav-400 hover:shadow-glow transition-all duration-300 cursor-pointer max-lg:hidden"
       style={direction === "prev" ? { left: "-0.25rem" } : { right: "-0.25rem" }}
     >
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -109,7 +109,7 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative px-4 md:px-14"
+          className="relative px-2 sm:px-4 md:px-14"
         >
           <NavArrow
             direction="prev"
@@ -131,7 +131,7 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.45, ease: EASE_LUXURY }}
               className="grid grid-cols-1 lg:grid-cols-5 rounded-[1.75rem] overflow-hidden shadow-strong ring-1 ring-lav-100/80"
             >
-              <div className="lg:col-span-3 bg-ivory p-10 md:p-14 flex flex-col justify-between min-h-[320px]">
+              <div className="lg:col-span-3 bg-ivory p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-between max-lg:min-h-0 min-h-[320px]">
                 <div>
                   {items[active].context && (
                     <p className="text-[11px] font-medium text-plum/35 uppercase tracking-widest mb-6">
@@ -168,7 +168,7 @@ export default function TestimonialsSection() {
                 </div>
               </div>
 
-              <div className="lg:col-span-2 bg-dark-section relative overflow-hidden flex flex-col items-center justify-center p-10 md:p-12 min-h-[240px]">
+              <div className="lg:col-span-2 bg-dark-section relative overflow-hidden flex flex-col items-center justify-center p-6 sm:p-8 md:p-10 lg:p-12 max-lg:min-h-0 min-h-[240px]">
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-lav-700/22 blur-2xl" />
                   <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-gold-400/8 blur-2xl" />
@@ -186,18 +186,22 @@ export default function TestimonialsSection() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex justify-center items-center gap-3 mt-10">
+          <div className="flex justify-center items-center gap-2 sm:gap-3 mt-8 sm:mt-10">
             {items.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 onClick={() => setActive(i)}
-                className={`transition-all duration-400 rounded-full cursor-pointer ${
-                  active === i ? "w-10 h-2 bg-lav-600" : "w-2 h-2 bg-lav-200 hover:bg-lav-400"
-                }`}
+                className="flex items-center justify-center min-h-11 min-w-11 p-3 cursor-pointer rounded-full"
                 aria-label={`${locale === "el" ? "Εμπειρία" : "Story"} ${i + 1}`}
                 aria-current={active === i ? "true" : undefined}
-              />
+              >
+                <span
+                  className={`block transition-all duration-400 rounded-full ${
+                    active === i ? "w-10 h-2 bg-lav-600" : "w-2 h-2 bg-lav-200 hover:bg-lav-400"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </motion.div>

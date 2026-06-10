@@ -25,8 +25,8 @@ export default function PremiumButton({
   disabled,
 }: PremiumButtonProps) {
   const sizes = {
-    md: "px-7 py-3 text-sm",
-    lg: "px-9 py-4 text-[15px]",
+    md: "px-7 py-3 text-sm max-lg:min-h-11",
+    lg: "px-9 py-4 text-[15px] max-lg:min-h-[3.25rem] max-lg:w-full sm:max-lg:w-auto",
   };
 
   const variants = {

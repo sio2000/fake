@@ -91,7 +91,7 @@ export default function ResourceArticleView({ resource: r }: Props) {
               sizes="(max-width: 768px) 100vw, 720px"
               priority
             />
-            <span className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 max-lg:opacity-100 transition-opacity">
               {t("clickToExpand")}
             </span>
           </button>
@@ -120,7 +120,7 @@ export default function ResourceArticleView({ resource: r }: Props) {
             >
               <iframe src={fileUrl} title={r.title} className="w-full h-full pointer-events-none" />
               <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 px-4 py-2 rounded-full bg-white/90 text-plum text-xs font-bold uppercase tracking-wider shadow-soft transition-opacity">
+                <span className="opacity-0 group-hover:opacity-100 max-lg:opacity-100 px-4 py-2 rounded-full bg-white/90 text-plum text-xs font-bold uppercase tracking-wider shadow-soft transition-opacity">
                   {t("viewFullscreen")}
                 </span>
               </span>
@@ -136,7 +136,7 @@ export default function ResourceArticleView({ resource: r }: Props) {
             aria-label={t("viewFullscreen")}
           >
             <ResourceImage src={fileUrl} alt="" fill className="object-contain bg-lav-50" sizes="720px" />
-            <span className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 max-lg:opacity-100 transition-opacity">
               {t("clickToExpand")}
             </span>
           </button>

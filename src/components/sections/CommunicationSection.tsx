@@ -13,11 +13,7 @@ export default function CommunicationSection() {
   const skills = t.raw("skills") as SkillItem[];
 
   const handleClick = (index: number) => {
-    setExpanded(index);
-  };
-
-  const handleDoubleClick = (index: number) => {
-    if (expanded === index) setExpanded(null);
+    setExpanded((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -29,7 +25,7 @@ export default function CommunicationSection() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -93,8 +89,7 @@ export default function CommunicationSection() {
                   animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
                   transition={{ duration: 0.6, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => handleClick(i)}
-                  onDoubleClick={() => handleDoubleClick(i)}
-                  className={`group relative rounded-2xl border transition-all duration-400 overflow-hidden cursor-pointer select-none ${
+                  className={`group relative rounded-2xl border transition-all duration-400 overflow-hidden cursor-pointer select-none min-h-[3.25rem] ${
                     isOpen
                       ? "bg-lav-900/60 border-lav-400/50 shadow-glow col-span-1 sm:col-span-2"
                       : "bg-dark-elevated border-white/8 hover:border-lav-400/35 hover:bg-lav-900/40"

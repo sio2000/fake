@@ -25,7 +25,7 @@ export default function PhilosophySection() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-28 items-center">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 xl:gap-28 items-center">
 
           {/* Copy */}
           <div>

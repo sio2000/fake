@@ -104,7 +104,7 @@ export default function ResourceCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center gap-2 text-xs text-lav-600 hover:text-lav-800 transition-colors truncate"
+              className="inline-flex items-center justify-center gap-2 text-xs text-lav-600 hover:text-lav-800 transition-colors truncate min-h-11 py-2 w-full rounded-xl hover:bg-lav-50/80"
               title={externalHref}
             >
               <span aria-hidden>🔗</span>

@@ -40,7 +40,7 @@ export default function MediaLightbox({ open, onClose, src, kind, title }: Props
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg flex items-center justify-center transition-colors cursor-pointer"
+            className="absolute top-4 right-4 md:top-6 md:right-6 z-10 min-w-11 min-h-11 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/25 text-white text-lg flex items-center justify-center transition-colors cursor-pointer touch-manipulation"
             aria-label="Κλείσιμο"
           >
             ✕

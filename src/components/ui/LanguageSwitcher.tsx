@@ -91,7 +91,7 @@ export default function LanguageSwitcher({ variant = "navbar" }: { variant?: Var
               aria-pressed={active}
               aria-label={labels[code]}
               className={cn(
-                "relative min-w-[2.75rem] px-3 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 cursor-pointer",
+                "relative min-w-[2.75rem] px-3 py-2 lg:py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 cursor-pointer min-h-11 lg:min-h-0",
                 active
                   ? "bg-white text-lav-700 shadow-soft ring-1 ring-lav-200/80"
                   : "text-plum/40 hover:text-plum/70"

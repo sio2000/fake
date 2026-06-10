@@ -34,10 +34,12 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages} locale={locale}>
       <JsonLd locale={locale} />
       <Preloader />
-      <div className="grain-overlay" aria-hidden />
-      <Navbar />
-      <main className="min-h-screen">{children}</main>
-      <Footer />
+      <div id="site-content">
+        <div className="grain-overlay max-lg:hidden" aria-hidden />
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </div>
     </NextIntlClientProvider>
   );
 }
