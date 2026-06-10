@@ -83,14 +83,14 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.05, rotate: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              className="relative w-11 h-11 rounded-2xl overflow-hidden shadow-medium ring-1 ring-lav-200/50 flex-shrink-0"
+              className="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0"
             >
               <Image
-                src="/logopouma.jpg"
+                src="/finallogo.png"
                 alt="The Pouma Academy"
                 fill
-                className="object-cover"
-                sizes="44px"
+                className="object-contain"
+                sizes="(max-width: 640px) 56px, 64px"
                 priority
               />
             </motion.div>

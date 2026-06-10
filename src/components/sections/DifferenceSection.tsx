@@ -25,7 +25,7 @@ export default function DifferenceSection() {
   };
 
   return (
-    <section className="relative py-36 px-6 bg-ivory overflow-hidden">
+    <section className="relative py-24 px-6 bg-ivory overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-[0.016] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
@@ -42,7 +42,7 @@ export default function DifferenceSection() {
               initial={{ y: 60, opacity: 0 }}
               animate={inView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-light text-5xl md:text-6xl text-plum leading-tight tracking-tight"
+              className="font-display font-light text-4xl md:text-5xl text-plum leading-tight tracking-tight"
             >
               {t("title")}
             </motion.h2>

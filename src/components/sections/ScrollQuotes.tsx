@@ -8,7 +8,7 @@ function segmentRange(index: number, total: number) {
   const start = index / total;
   const end = (index + 1) / total;
   const span = end - start;
-  const fade = Math.min(span * 0.32, 0.1);
+  const fade = Math.min(span * 0.45, 0.14);
 
   let peakStart = start + fade;
   let peakEnd = end - fade;
@@ -40,8 +40,8 @@ function StickyQuote({
   const { input } = segmentRange(index, total);
 
   const opacity = useTransform(scrollYProgress, input, [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, input, [32, 0, 0, -32]);
-  const scale = useTransform(scrollYProgress, input, [0.96, 1, 1, 0.96]);
+  const y = useTransform(scrollYProgress, input, [20, 0, 0, -20]);
+  const scale = useTransform(scrollYProgress, input, [0.98, 1, 1, 0.98]);
   const lineScale = useTransform(scrollYProgress, input, [0, 1, 1, 0]);
 
   return (
@@ -54,7 +54,7 @@ function StickyQuote({
       <div
         className={`relative max-w-lg md:max-w-2xl ${isLeft ? "text-left" : "text-right ml-auto"}`}
       >
-        <p className="font-display italic text-[clamp(1.75rem,4.5vw,3.25rem)] text-plum leading-snug tracking-tight">
+        <p className="font-display italic text-[clamp(1.35rem,3.5vw,2.5rem)] text-plum leading-snug tracking-tight">
           {text}
         </p>
         <motion.div

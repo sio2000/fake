@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-36 px-6 md:px-10 bg-white overflow-hidden"
+      className="relative py-24 px-6 md:px-10 bg-white overflow-hidden"
       onMouseEnter={pause}
       onMouseLeave={resume}
       aria-roledescription="carousel"
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
               initial={{ y: 60, opacity: 0 }}
               animate={inView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.1, ease: EASE_LUXURY }}
-              className="font-display font-light text-5xl md:text-6xl text-plum leading-tight tracking-tight"
+              className="font-display font-light text-4xl md:text-5xl text-plum leading-tight tracking-tight"
             >
               {t("headline")}
               <br />

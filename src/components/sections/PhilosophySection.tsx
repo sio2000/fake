@@ -18,7 +18,7 @@ export default function PhilosophySection() {
   ];
 
   return (
-    <section ref={sRef} className="relative py-36 overflow-hidden bg-white">
+    <section ref={sRef} className="relative py-24 overflow-hidden bg-white">
       <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-48 -right-32 w-[600px] h-[600px] rounded-full bg-lav-50 blur-3xl opacity-90" />
         <div className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-gold-200/30 blur-3xl" />
@@ -43,7 +43,7 @@ export default function PhilosophySection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl lg:text-7xl text-plum leading-[1.03] tracking-tight"
+                className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-plum leading-[1.03] tracking-tight"
               >
                 {t("headline")}
               </motion.h2>
@@ -53,7 +53,7 @@ export default function PhilosophySection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl lg:text-7xl text-gradient leading-[1.03] tracking-tight"
+                className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-gradient leading-[1.03] tracking-tight"
               >
                 {t("headline2")}
               </motion.h2>

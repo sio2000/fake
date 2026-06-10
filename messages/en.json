@@ -24,6 +24,7 @@
     "lang": "ΕΛ"
   },
   "hero": {
+    "motto": "Speak English the way you dream",
     "tagline": "Boutique Transformation Academy",
     "headline1": "Your voice",
     "headline2": "deserves to",
@@ -31,6 +32,7 @@
     "subtext": "We don't teach English. We unlock expression, confidence, and professional presence.",
     "cta1": "Begin Your Journey",
     "cta2": "View Programs",
+    "whyName": "why we named it The Pouma Academy",
     "scrollHint": "Discover"
   },
   "scrollQuotes": {
@@ -59,10 +61,10 @@
     "headline": "We don't teach.",
     "headline2": "We transform.",
     "body": "Every person carries within them a power that has not yet found its voice. Communication is not just language — it is presence, thought, confidence. That is exactly what we teach.",
-    "stat1Value": "500+",
-    "stat1Label": "People who found their voice",
-    "stat2Value": "12+",
-    "stat2Label": "Years of human-centered education",
+    "stat1Value": "3,500+",
+    "stat1Label": "students speak English with courage and without hesitation",
+    "stat2Value": "19",
+    "stat2Label": "years of teaching in Greece, Europe and the USA",
     "stat3Value": "98%",
     "stat3Label": "Achieve their goal"
   },
@@ -89,6 +91,7 @@
     "headline": "Knowing isn't enough.",
     "headline2": "You need to express yourself.",
     "body": "True power is not grammar. It is the ability to think, organize and express yourself clearly and confidently — in every environment.",
+    "quote": "Reading the signs doesn't make you a driver. Just as endless grammar exercises don't, on their own, teach you to speak English",
     "skillsHint": "Click to learn more · double-click to close",
     "skills": [
       {
@@ -117,16 +120,28 @@
       }
     ]
   },
+  "method": {
+    "label": "The Pouma Method",
+    "journeyLabel": "The journey",
+    "stages": [
+      "Grammar and Speaking Foundations",
+      "Speaking Reset",
+      "Professional Communication & Executive Presence",
+      "Communication Strategy"
+    ]
+  },
   "puma": {
     "label": "The Puma Story",
     "headline": "The Power that",
     "headline2": "was always there.",
-    "p1": "The Academy is named Pouma. It is no coincidence.",
-    "p2": "The Puma has unimaginable power. But that power is invisible when it is still. It only reveals itself when it begins to run.",
-    "p3": "Every person carries a sleeping Puma within them. The potential exists. The strength exists. The ambition exists.",
-    "p4": "The English language is not merely a tool. It is the spark that awakens the Puma within you. And with it awakens your presence, your confidence, your voice.",
-    "p5": "And once the Puma awakens — it never stops.",
-    "quote": "I don't teach you English. I help you find the voice you always had."
+    "p1": "Just as the puma stays still before it runs toward its goal, you too HAVE power and ambitions that nonetheless remain dormant without proper English. You need the environment and the method to believe in yourself and chase your dreams today with momentum.",
+    "p2": "Without English, you are limited.",
+    "p3": "With proper English, you multiply your power.",
+    "p4": "At The Pouma Academy we have the experience and the method so you achieve what you want and finally feel: \"Yes, I speak English the way I always wanted and the way I deserve\"",
+    "p5": "And then one goal will bring the next.. now you design your future and you shine",
+    "quote1": "Through English, you discover the language you want to speak, but above all the way to speak with love and respect for yourself.",
+    "quote2": "What we do together goes beyond conventional teaching. It is a deeper journey where you learn to trust your strengths, recognize your worth, and allow yourself to shine.",
+    "quote3": "You learn a new language to connect with the world, but primarily to build a strong, confident relationship with yourself."
   },
   "exclusivity": {
     "label": "Exclusive Groups",
@@ -170,9 +185,9 @@
     }
   },
   "testimonials": {
-    "label": "Transformation Stories",
-    "headline": "People who found",
-    "headline2": "their voice.",
+    "label": "Success Stories",
+    "headline": "People who learned",
+    "headline2": "to express themselves with confidence.",
     "items": [
       {
         "name": "Maria P.",
@@ -297,9 +312,9 @@
     },
     "story": {
       "label": "The Story",
-      "headline": "I began to see something traditional schools ignored.",
-      "body1": "After years of teaching I realized that the problem was never grammar. It was confidence. It was the voice. It was the lack of belief that we deserve to be heard.",
-      "body2": "So I completely changed how I work. I stopped teaching English and started working with people. With their fear. With their strength. With their vision."
+      "headline": "Your voice has its own power.",
+      "body1": "With 19 years of teaching experience around the world, I know that real learning does not stay on the surface of rules and grammar. Here, we focus on the person behind the language.",
+      "body2": "Together we unlock your true confidence. English becomes the means to believe in your abilities, to express yourself freely, and to pursue your goals – personally and professionally."
     },
     "values": {
       "label": "What I Believe",

@@ -11,7 +11,7 @@ export default function CtaSection() {
   const inView = useInView(ref, { once: true, margin: "-12% 0px" });
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden bg-ivory">
+    <section className="relative py-24 px-6 overflow-hidden bg-ivory">
       {/* Dark inset card */}
       <div className="max-w-5xl mx-auto relative">
         {/* Actual dark card */}

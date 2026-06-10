@@ -12,7 +12,7 @@ export const siteConfig = {
   locale: "el_GR",
   alternateLocale: "en_US",
   twitterHandle: "@poumaacademy",
-  logoPath: "/logopouma.jpg",
+  logoPath: "/finallogo.png",
   ogImagePath: "/opengraph-image",
 } as const;
 
@@ -278,8 +278,8 @@ export const rootMetadata: Metadata = {
     images: [ogImageUrl()],
   },
   icons: {
-    icon: [{ url: siteConfig.logoPath, type: "image/jpeg" }],
-    apple: [{ url: siteConfig.logoPath, type: "image/jpeg" }],
+    icon: [{ url: siteConfig.logoPath, type: "image/png" }],
+    apple: [{ url: siteConfig.logoPath, type: "image/png" }],
   },
   other: {
     "og:logo": logoUrl(),

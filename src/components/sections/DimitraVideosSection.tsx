@@ -149,7 +149,7 @@ export default function DimitraVideosSection() {
   return (
     <section
       ref={ref}
-      className="relative py-28 md:py-36 overflow-hidden bg-gradient-to-b from-lav-50 via-lav-100/80 to-ivory-mid"
+      className="relative py-20 md:py-24 overflow-hidden bg-gradient-to-b from-lav-50 via-lav-100/80 to-ivory-mid"
       aria-labelledby="dimitra-videos-heading"
     >
       <div className="absolute inset-0 pointer-events-none">
@@ -208,8 +208,8 @@ export default function DimitraVideosSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-plum-mid/65 via-lav-700/15 to-lav-400/10" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="flex items-center justify-center w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-full bg-white/95 text-lav-600 shadow-strong ring-4 ring-lav-200/50 group-hover:scale-110 transition-transform duration-500">
-                      <PlayIcon className="w-7 h-7 ml-1" />
+                    <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 text-lav-600 shadow-medium ring-1 ring-lav-300/70 border border-white/60 group-hover:scale-110 group-hover:ring-gold-300/70 transition-all duration-500">
+                      <PlayIcon className="w-5 h-5 ml-0.5" />
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">

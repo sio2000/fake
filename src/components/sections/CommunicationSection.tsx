@@ -21,7 +21,7 @@ export default function CommunicationSection() {
   };
 
   return (
-    <section className="relative py-36 px-6 overflow-hidden bg-dark-section">
+    <section className="relative py-24 px-6 overflow-hidden bg-dark-section">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-lav-800/30 blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-gold-400/14 blur-3xl" />
@@ -47,7 +47,7 @@ export default function CommunicationSection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl text-white leading-[1.03] tracking-tight"
+                className="font-display font-light text-4xl md:text-5xl text-white leading-[1.03] tracking-tight"
               >
                 {t("headline")}
               </motion.h2>
@@ -57,7 +57,7 @@ export default function CommunicationSection() {
                 initial={{ y: 70, opacity: 0 }}
                 animate={inView ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-light text-5xl md:text-6xl text-gold leading-[1.03] tracking-tight"
+                className="font-display font-light text-4xl md:text-5xl text-gold leading-[1.03] tracking-tight"
               >
                 {t("headline2")}
               </motion.h2>
@@ -70,6 +70,15 @@ export default function CommunicationSection() {
               className="text-white/50 text-lg leading-relaxed max-w-md"
             >
               {t("body")}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.42 }}
+              className="mt-7 border-l-2 border-gold-400/50 pl-5 font-display italic text-gold-300 text-lg md:text-xl leading-relaxed max-w-md"
+            >
+              {t("quote")}
             </motion.p>
 
           </div>

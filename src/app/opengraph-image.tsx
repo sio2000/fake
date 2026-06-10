@@ -8,9 +8,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const logoPath = path.join(process.cwd(), "public", "logopouma.jpg");
+  const logoPath = path.join(process.cwd(), "public", "finallogo.png");
   const logoBuffer = await readFile(logoPath);
-  const logoSrc = `data:image/jpeg;base64,${logoBuffer.toString("base64")}`;
+  const logoSrc = `data:image/png;base64,${logoBuffer.toString("base64")}`;
 
   return new ImageResponse(
     (

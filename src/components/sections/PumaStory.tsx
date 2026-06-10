@@ -16,7 +16,7 @@ export default function PumaStory() {
   const paras = [t("p1"), t("p2"), t("p3"), t("p4"), t("p5")];
 
   return (
-    <section ref={sRef} className="relative py-36 px-6 overflow-hidden bg-dark-section">
+    <section id="puma" ref={sRef} className="relative py-24 px-6 overflow-hidden bg-dark-section scroll-mt-24">
       {/* Orbs */}
       <motion.div style={{ y: orbY1 }} className="absolute -top-20 right-0 w-[550px] h-[550px] pointer-events-none">
         <div className="w-full h-full rounded-full bg-radial from-lav-600/28 via-lav-800/8 to-transparent blur-3xl" />
@@ -49,27 +49,19 @@ export default function PumaStory() {
           <span className="text-[11px] font-bold text-lav-300 tracking-[0.22em] uppercase">{t("label")}</span>
         </motion.div>
 
-        {/* Headline */}
-        <div className="overflow-hidden mb-1">
-          <motion.h2
-            initial={{ y: 80, opacity: 0 }}
-            animate={inView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-5xl md:text-6xl lg:text-7xl text-white leading-[1.03] tracking-tight"
-          >
-            {t("headline")}
-          </motion.h2>
-        </div>
-        <div className="overflow-hidden mb-16">
-          <motion.h2
-            initial={{ y: 80, opacity: 0 }}
-            animate={inView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 1.1, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-5xl md:text-6xl lg:text-7xl text-lav-300 leading-[1.03] tracking-tight"
-          >
-            {t("headline2")}
-          </motion.h2>
-        </div>
+        {/* Headline — on a yellow background */}
+        <motion.div
+          initial={{ y: 60, opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-14"
+        >
+          <span className="inline-block rounded-2xl bg-gradient-to-r from-gold-300 to-gold-400 px-6 py-3 md:px-7 md:py-4 shadow-gold-glow">
+            <span className="block font-display font-light text-4xl md:text-5xl lg:text-6xl text-plum leading-[1.05] tracking-tight">
+              {t("headline")} {t("headline2")}
+            </span>
+          </span>
+        </motion.div>
 
         {/* Paragraphs */}
         <div className="space-y-6 mb-16">
@@ -99,9 +91,11 @@ export default function PumaStory() {
           <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-400 via-gold-300/70 to-transparent" />
           <div className="relative px-10 py-8">
             <span className="absolute top-3 left-5 font-display text-6xl leading-none" style={{ color: "rgba(223,184,74,0.25)" }}>"</span>
-            <blockquote className="font-script text-3xl md:text-4xl leading-snug pt-4 pl-6 text-gold-300">
-              {t("quote")}
-            </blockquote>
+            <div className="relative space-y-4 pt-4 pl-6">
+              <p className="font-display italic text-xl md:text-2xl leading-snug text-gold-300">{t("quote1")}</p>
+              <p className="text-base md:text-lg leading-relaxed text-white/70">{t("quote2")}</p>
+              <p className="text-base md:text-lg leading-relaxed text-white/70">{t("quote3")}</p>
+            </div>
           </div>
         </motion.div>
       </motion.div>

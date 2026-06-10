@@ -67,12 +67,12 @@ export default function Footer() {
             {/* Brand */}
             <div className="md:pr-4">
               <Link href={lp("/")} className="inline-flex items-center gap-3.5 mb-5 group">
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden shadow-glow ring-1 ring-white/10 flex-shrink-0">
+                <div className="relative w-14 h-14 flex-shrink-0">
                   <Image
-                    src="/logopouma.jpg"
+                    src="/finallogo.png"
                     alt="The Pouma Academy"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="56px"
                   />
                 </div>

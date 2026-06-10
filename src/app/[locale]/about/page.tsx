@@ -43,7 +43,7 @@ export default function AboutPage() {
               initial={{ y: 90, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1.15, delay: 0.1, ease: EASE_LUXURY }}
-              className="text-display-xl text-6xl md:text-7xl lg:text-[5.5rem] text-plum"
+              className="text-display-xl text-5xl md:text-6xl lg:text-7xl text-plum"
             >
               {t("hero.headline")}
             </motion.h1>
@@ -53,7 +53,7 @@ export default function AboutPage() {
               initial={{ y: 90, opacity: 0 }}
               animate={heroInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 1.15, delay: 0.18, ease: EASE_LUXURY }}
-              className="text-display-xl text-6xl md:text-7xl lg:text-[5.5rem] text-gradient"
+              className="text-display-xl text-5xl md:text-6xl lg:text-7xl text-gradient"
             >
               {t("hero.headline2")}
             </motion.h1>
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 <p className="text-eyebrow text-plum/35 mb-1">
                   {locale === "el" ? "Εμπειρία" : "Experience"}
                 </p>
-                <p className="font-display text-2xl text-plum">12+</p>
+                <p className="font-display text-2xl text-plum">19</p>
               </motion.div>
 
               <motion.div
@@ -136,7 +136,7 @@ export default function AboutPage() {
                 <p className="text-eyebrow text-plum/35 mb-1">
                   {locale === "el" ? "Μεταμορφώσεις" : "Transformations"}
                 </p>
-                <p className="font-display text-2xl text-plum">500+</p>
+                <p className="font-display text-2xl text-plum">3.500+</p>
               </motion.div>
             </motion.div>
           </motion.div>

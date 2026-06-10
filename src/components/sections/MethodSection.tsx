@@ -1,0 +1,56 @@
+"use client";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { EASE_LUXURY } from "@/lib/motion";
+
+export default function MethodSection() {
+  const t = useTranslations("method");
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-12% 0px" });
+  const stages = t.raw("stages") as string[];
+
+  return (
+    <section className="relative py-24 px-6 overflow-hidden bg-section-elevated">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 right-0 w-[480px] h-[480px] rounded-full bg-lav-100/60 blur-3xl" />
+        <div className="absolute bottom-0 -left-16 w-80 h-80 rounded-full bg-gold-200/30 blur-3xl" />
+      </div>
+
+      <div ref={ref} className="max-w-5xl mx-auto relative z-10">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 mb-5">
+            <span className="w-8 h-px bg-gold-400/70" />
+            <span className="text-eyebrow text-lav-600">{t("journeyLabel")}</span>
+            <span className="w-8 h-px bg-gold-400/70" />
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: EASE_LUXURY }}
+            className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-plum tracking-tight leading-[1.05]"
+          >
+            {t("label")}
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {stages.map((stage, i) => (
+            <motion.div
+              key={stage}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.12 + i * 0.1, ease: EASE_LUXURY }}
+              className="relative rounded-2xl border border-lav-100 bg-white/90 backdrop-blur-sm p-6 shadow-soft hover:shadow-medium hover:border-lav-200 transition-all duration-400"
+            >
+              <span className="font-display text-3xl text-gradient font-light leading-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="mt-4 text-plum font-medium text-base leading-snug">{stage}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

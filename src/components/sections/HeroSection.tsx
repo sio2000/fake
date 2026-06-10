@@ -31,7 +31,7 @@ export default function HeroSection() {
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 140]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.55], [1, 0.94]);
-  const ringRotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
+  const ringRotate = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   useEffect(() => {
     const fn = (e: MouseEvent) => {
@@ -54,9 +54,17 @@ export default function HeroSection() {
         <motion.div style={{ x: orbX, y: orbY, rotate: ringRotate }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(90vw,820px)] h-[min(90vw,820px)]"
         >
-          <div className="absolute inset-0 rounded-full border border-lav-300/25" />
-          <div className="absolute inset-[12%] rounded-full border border-lav-200/20" />
-          <div className="absolute inset-[24%] rounded-full border border-gold-300/15" />
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-lav-400/45"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+          />
+          <div className="absolute inset-[12%] rounded-full border border-lav-300/35" />
+          <motion.div
+            className="absolute inset-[24%] rounded-full border border-gold-400/30"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          />
         </motion.div>
 
         <motion.div
@@ -115,6 +123,15 @@ export default function HeroSection() {
         style={{ y: contentY, opacity: contentOpacity, scale }}
         className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-28 pb-24"
       >
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: EASE_LUXURY }}
+          className="font-script text-2xl md:text-3xl text-gold-500 mb-5"
+        >
+          {t("motto")}
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -139,7 +156,7 @@ export default function HeroSection() {
                   delay: 0.35 + i * 0.12,
                   ease: EASE_LUXURY,
                 }}
-                className={`text-display-xl block text-[clamp(3.2rem,10vw,7rem)] ${
+                className={`text-display-xl block text-[clamp(2.6rem,8vw,5.25rem)] ${
                   i === 1 ? "text-gradient" : "text-plum"
                 }`}
               >
@@ -180,6 +197,29 @@ export default function HeroSection() {
           </PremiumButton>
           <PremiumButton href={`/${locale}/programs`} variant="secondary" size="lg">
             {t("cta2")}
+          </PremiumButton>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2, ease: EASE_LUXURY }}
+          className="mt-8"
+        >
+          <PremiumButton href="#puma" variant="gold" size="md" className="rounded-full px-6">
+            {t("whyName")}
+            <motion.svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              animate={{ y: [0, 3, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              aria-hidden
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </motion.svg>
           </PremiumButton>
         </motion.div>
       </motion.div>

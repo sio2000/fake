@@ -272,8 +272,8 @@ export default function AdminDashboard() {
     <div className="min-h-screen flex bg-ivory">
       <aside className="w-64 flex flex-col py-8 px-5 flex-shrink-0 bg-white border-r border-lav-100">
         <div className="flex items-center gap-3 mb-10 px-2">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-soft flex-shrink-0">
-            <Image src="/logopouma.jpg" alt="The Pouma Academy" fill className="object-cover" sizes="40px" />
+          <div className="relative w-10 h-10 flex-shrink-0">
+            <Image src="/finallogo.png" alt="The Pouma Academy" fill className="object-contain" sizes="40px" />
           </div>
           <div>
             <span className="text-plum font-semibold text-sm block leading-tight">The Pouma Academy</span>

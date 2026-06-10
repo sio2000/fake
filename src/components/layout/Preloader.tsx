@@ -78,22 +78,17 @@ export default function Preloader() {
             className="relative z-10 flex flex-col items-center text-center px-8"
           >
             <motion.div
-              className="relative w-24 h-24 rounded-3xl overflow-hidden shadow-glow mb-10"
+              className="relative w-28 h-28 mb-10"
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image
-                src="/logopouma.jpg"
+                src="/finallogo.png"
                 alt="The Pouma Academy"
                 fill
-                className="object-cover"
-                sizes="96px"
+                className="object-contain drop-shadow-[0_0_30px_rgba(176,154,232,0.55)]"
+                sizes="112px"
                 priority
-              />
-              <motion.div
-                className="absolute inset-0 rounded-3xl ring-2 ring-gold-400/40"
-                animate={{ opacity: [0.3, 0.8, 0.3] }}
-                transition={{ duration: 2.5, repeat: Infinity }}
               />
             </motion.div>
 
