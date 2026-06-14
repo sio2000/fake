@@ -4,7 +4,7 @@ import { PRELOADER_STORAGE_KEY } from "@/lib/preloader";
 
 export const metadata = rootMetadata;
 
-const preloaderInitScript = `(function(){try{var k="${PRELOADER_STORAGE_KEY}";if(sessionStorage.getItem(k)==="1"){document.documentElement.classList.add("preloader-ready");}else{document.documentElement.classList.add("preloader-pending");document.documentElement.style.overflow="hidden";}}catch(e){document.documentElement.classList.add("preloader-pending");}})();`;
+const preloaderInitScript = `(function(){try{var k="${PRELOADER_STORAGE_KEY}";if(localStorage.getItem(k)==="1"){document.documentElement.classList.add("preloader-ready");}else{document.documentElement.classList.add("preloader-pending");}}catch(e){document.documentElement.classList.add("preloader-pending");}})();`;
 
 export default function RootLayout({
   children,
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className="h-full">
+    <html lang="el" className="h-full" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: preloaderInitScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +22,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full">
+      <body className="min-h-full" suppressHydrationWarning>
         <div
           id="preloader-static"
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-plum-mid"

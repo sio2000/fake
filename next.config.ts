@@ -9,7 +9,24 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "**" }
     ]
-  }
+  },
+  turbopack: {
+    root: process.cwd(),
+    resolveAlias: {},
+    watch: {
+      ignored: [
+        "**/.next/**",
+        "**/node_modules/**",
+        "**/.git/**",
+        "**/dist/**",
+        "**/.venv/**",
+      ],
+    },
+  },
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 5,
+  },
 };
 
 export default withNextIntl(nextConfig);
