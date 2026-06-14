@@ -26,7 +26,9 @@ export default function LanguageSwitcher({ variant = "navbar" }: { variant?: Var
 
   const setLocale = (next: "el" | "en") => {
     if (next === locale) return;
-    router.replace(pathname, { locale: next });
+
+    const nextPath = pathname.replace(/^(?:\/(?:el|en))/, `/${next}`);
+    router.replace(nextPath);
   };
 
   const isMobile = variant === "mobile";
