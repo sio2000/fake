@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 
 /** Map each quote to a homepage section band (6 quotes across 9 sections). */
 function quoteRange(index: number) {
-  const sections = 9;
+  const sections = 10;
   const start = Math.max(0, index / sections - 0.01);
   const center = (index + 0.65) / sections;
   const end = Math.min(1, (index + 1.35) / sections + 0.01);
@@ -35,17 +35,22 @@ function FloatingQuote({
   const isLeft = index % 2 === 0;
   const { input } = quoteRange(index);
 
-  const opacity = useTransform(scrollYProgress, input, [0, 0.55, 1, 0.55, 0]);
+  const opacity = useTransform(scrollYProgress, input, [0, 0.78, 1, 0.78, 0]);
   const x = useTransform(
     scrollYProgress,
     input,
-    isLeft ? [-28, -8, 0, -8, -28] : [28, 8, 0, 8, 28]
+    isLeft ? [-95, -35, 0, -35, -95] : [95, 35, 0, 35, 95]
   );
-  const y = useTransform(scrollYProgress, input, [18, 6, 0, -6, -18]);
-  const scale = useTransform(scrollYProgress, input, [0.96, 0.99, 1.01, 0.99, 0.96]);
-  const blur = useTransform(scrollYProgress, input, [5, 1.5, 0, 1.5, 5]);
+  const y = useTransform(scrollYProgress, input, [45, 20, 0, -20, -45]);
+  const scale = useTransform(scrollYProgress, input, [0.98, 1.02, 1.08, 1.02, 0.98]);
+  const rotate = useTransform(
+    scrollYProgress,
+    input,
+    isLeft ? [-2.2, -0.8, 0, -0.8, -2.2] : [2.2, 0.8, 0, 0.8, 2.2]
+  );
+  const blur = useTransform(scrollYProgress, input, [3, 0, 0, 0, 3]);
   const filter = useTransform(blur, (v) => `blur(${v}px)`);
-  const lineW = useTransform(scrollYProgress, input, [0, 0.5, 1, 0.5, 0]);
+  const lineW = useTransform(scrollYProgress, input, [0, 0.72, 1, 0.72, 0]);
 
   const topOffsets = ["38%", "44%", "36%", "46%", "40%", "42%"];
 
@@ -56,26 +61,28 @@ function FloatingQuote({
         x,
         y,
         scale,
+        rotate,
         filter,
         top: topOffsets[index % topOffsets.length],
       }}
-      className={`fixed z-20 w-[min(15rem,22vw)] pointer-events-none hidden xl:block ${
+      className={`fixed z-30 w-[min(26rem,36vw)] pointer-events-none hidden xl:block ${
         isLeft ? "left-8 2xl:left-14" : "right-8 2xl:right-14"
       }`}
       aria-hidden
     >
       <div
-        className={`relative rounded-2xl border border-lav-200/55 bg-white/78 backdrop-blur-md px-5 py-4 shadow-soft ring-1 ring-lav-100/80 ${
+        className={`relative rounded-[2.25rem] border border-lav-300/80 bg-white/95 backdrop-blur-xl px-6 py-5 shadow-[0_36px_110px_rgba(58,23,128,0.15)] ring-1 ring-lav-100/90 ${
           isLeft ? "text-left" : "text-right"
         }`}
       >
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-lav-50/60 via-transparent to-gold-100/30 pointer-events-none" />
-        <p className="relative font-display italic text-[clamp(1.05rem,1.35vw,1.45rem)] text-plum/85 leading-relaxed tracking-wide">
+        <div className="absolute -top-3 left-5 text-[2.25rem] text-gold-300/85">“</div>
+        <div className="absolute inset-0 rounded-[2.25rem] bg-gradient-to-br from-lav-50/70 via-transparent to-gold-100/25 pointer-events-none" />
+        <p className="relative font-display italic text-[clamp(1.15rem,1.55vw,1.65rem)] text-plum-950/95 leading-tight tracking-wide">
           {text}
         </p>
         <motion.div
           style={{ scaleX: lineW }}
-          className={`mt-4 h-px w-16 bg-gradient-to-r from-lav-400/70 to-transparent ${
+          className={`mt-5 h-px w-20 bg-gradient-to-r from-plum-700 to-transparent ${
             isLeft ? "origin-left" : "ml-auto origin-right"
           }`}
         />

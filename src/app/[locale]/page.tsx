@@ -18,10 +18,10 @@ export default function HomePage() {
     <>
       <HeroSection />
       <IntroSection />
-      <RevealStatement namespace="reveal" />
-      <RevealBridge />
-      <RevealStatement namespace="reveal2" />
       <HomeSectionsWithQuotes>
+        <RevealStatement namespace="reveal" />
+        <RevealBridge />
+        <RevealStatement namespace="reveal2" />
         <CommunicationSection />
         <MethodSection />
         <PhilosophySection />

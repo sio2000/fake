@@ -54,11 +54,13 @@ export default function IntroSection() {
   const cards = t.raw("cards") as IntroCard[];
 
   return (
-    <section className="relative py-20 md:py-28 px-6 overflow-hidden bg-section-elevated">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 max-w-3xl bg-gradient-to-r from-transparent via-lav-300/50 to-transparent" />
+    <section className="relative py-20 md:py-28 px-6 overflow-hidden bg-[#f6f1ff]">
+      <div className="absolute inset-x-0 top-0 h-2 bg-black/5" />
+      <div className="absolute left-0 top-16 h-24 w-24 rounded-br-[3rem] bg-[#5f3fc0]/10" />
+      <div className="absolute right-0 bottom-24 h-28 w-28 rounded-tl-[3rem] bg-[#f5dd79]/15" />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[60vw] h-72 bg-[radial-gradient(ellipse_at_center,rgba(206,180,247,0.22)_0%,transparent_70%)] blur-2xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-gold-200/20 blur-3xl" />
+        <div className="absolute -top-16 left-1/4 h-32 w-32 rounded-full bg-[#5f3fc0]/10 blur-2xl" />
+        <div className="absolute bottom-10 right-10 h-24 w-24 rounded-full bg-[#f5dd79]/15 blur-2xl" />
       </div>
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
@@ -106,11 +108,7 @@ export default function IntroSection() {
         </div>
 
         <div className="relative mt-14 md:mt-16">
-          <div
-            className="hidden md:block absolute top-[4.5rem] left-[16.66%] right-[16.66%] h-px bg-gradient-to-r from-lav-200/0 via-lav-300/50 to-lav-200/0 pointer-events-none"
-            aria-hidden
-          />
-
+          <div className="absolute inset-x-0 top-10 h-px bg-black/10" aria-hidden />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7">
             {cards.map((card, i) => {
               const theme = CARD_THEMES[i % CARD_THEMES.length];
@@ -120,57 +118,53 @@ export default function IntroSection() {
                   initial={{ opacity: 0, y: 36 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.7, delay: 0.5 + i * 0.14, ease: EASE_LUXURY }}
-                  whileHover={{
-                    y: -10,
-                    transition: { type: "spring", stiffness: 280, damping: 22 },
-                  }}
-                  className={`group relative rounded-[1.75rem] p-[1px] bg-gradient-to-br ${theme.frame} shadow-soft transition-shadow duration-500 ${theme.hover}`}
+                  whileHover={{ y: -10 }}
+                  className={`group relative rounded-[1.75rem] border-4 border-black/10 p-[1px] bg-gradient-to-br ${theme.frame} shadow-[0_28px_90px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_34px_120px_rgba(0,0,0,0.12)]`}
                 >
-                  <article className="relative h-full overflow-hidden rounded-[calc(1.75rem-1px)] bg-white/95 backdrop-blur-md px-7 pt-8 pb-8">
+                  <article className="relative h-full overflow-hidden rounded-[calc(1.75rem-1px)] bg-[#f7f2ff] px-8 pt-9 pb-10 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]">
+                    <div className="absolute right-0 top-0 h-16 w-16 rounded-bl-[2rem] border-b-4 border-l-4 border-black/10 bg-black/5" aria-hidden />
                     <span
-                      className={`pointer-events-none absolute -top-10 -right-8 h-36 w-36 rounded-full blur-3xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 ${theme.glow}`}
+                      className={`pointer-events-none absolute -top-10 -right-8 h-40 w-40 rounded-full blur-[42px] opacity-65 ${theme.glow}`}
                       aria-hidden
                     />
                     <span
-                      className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${theme.accent} opacity-70 transition-opacity duration-300 group-hover:opacity-100`}
-                      aria-hidden
-                    />
-                    <span
-                      className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/70 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                      className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${theme.accent} opacity-95`}
                       aria-hidden
                     />
 
-                    <div className="relative flex items-start justify-between gap-4 mb-6">
+                    <div className="relative flex items-center justify-between gap-4 mb-6">
                       <span
-                        className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ring-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] ${theme.icon}`}
+                        className={`inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.2rem] bg-white border-4 border-black/10 ${theme.icon} shadow-[0_15px_30px_rgba(0,0,0,0.08)]`}
                         aria-hidden
                       >
                         <svg
-                          width="26"
-                          height="26"
+                          width="28"
+                          height="28"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
-                          strokeWidth={1.65}
+                          strokeWidth={2}
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         >
                           {ICONS[i % ICONS.length]}
                         </svg>
                       </span>
-                      <span
-                        className="method-num font-display text-[3.25rem] font-light leading-none tracking-tight opacity-90"
-                        aria-hidden
-                      >
+                      <span className="method-num font-display text-[3.8rem] font-semibold leading-none tracking-tight text-black/80" aria-hidden>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <p className="relative text-eyebrow text-lav-600 mb-3">{card.tag}</p>
-                    <h3 className="relative font-display text-[1.65rem] md:text-[1.75rem] text-plum leading-[1.15] mb-4">
+                    <div className="mb-4">
+                      <span className="inline-flex rounded-full bg-black text-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] shadow-[0_6px_20px_rgba(0,0,0,0.08)]">
+                        {card.tag}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-[1.85rem] md:text-[2rem] text-black leading-[1.05] mb-4 tracking-tight">
                       {card.title}
                     </h3>
-                    <p className="relative text-[15px] leading-[1.75] text-plum/62">{card.desc}</p>
+                    <p className="text-[15px] leading-8 text-black/75">{card.desc}</p>
+
                   </article>
                 </motion.div>
               );

@@ -24,7 +24,7 @@ export default function RevealStatement({
   return (
     <section className="bg-ivory py-12 md:py-16">
       <div
-        className="relative w-full overflow-hidden h-[64vh] min-h-[440px] bg-scroll lg:bg-fixed"
+        className="relative w-full overflow-hidden h-[48vh] min-h-[340px] bg-scroll lg:bg-fixed"
         style={{
           backgroundColor: "var(--color-plum)",
           backgroundImage: "url('/finallogo.png')",
