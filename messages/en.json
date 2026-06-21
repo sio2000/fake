@@ -33,7 +33,16 @@
     "cta1": "Begin Your Journey",
     "cta2": "View Programs",
     "whyName": "why we named it The Pouma Academy",
-    "scrollHint": "Discover"
+    "scrollHint": "Discover",
+    "portraitName": "Dimitra Giannouplaki",
+    "portraitRole": "Founder · Communication Coach",
+    "portraitBadge": "Boutique groups of 3–4",
+    "ratingLabel": "Loved by her students",
+    "trust": [
+      { "value": "19", "label": "years of experience" },
+      { "value": "3,500+", "label": "students" },
+      { "value": "98%", "label": "reach their goal" }
+    ]
   },
   "intro": {
     "eyebrow": "Why The Pouma Academy",
@@ -58,6 +67,9 @@
       }
     ],
     "cta": "Book a free intro"
+  },
+  "marquee": {
+    "label": "Speak with confidence in"
   },
   "reveal": {
     "eyebrow": "The Pouma Academy",
@@ -84,6 +96,24 @@
     "q5": "\"I want to be taken seriously.\"",
     "q6": "\"I lost opportunities because I couldn't express myself.\"",
     "scrollHint": "Keep scrolling"
+  },
+  "voices": {
+    "eyebrow": "Sound familiar?",
+    "headline1": "Do you recognize",
+    "headline2": "your own voice here?",
+    "lead": "You're not alone. These are the thoughts we hear again and again — in the moment right before someone decides to change.",
+    "items": [
+      "\"I'm afraid to speak.\"",
+      "\"I know more than I can express.\"",
+      "\"I want to sound professional.\"",
+      "\"I want to be taken seriously.\"",
+      "\"I lose opportunities because I can't express myself.\"",
+      "\"I want to chase something bigger.\""
+    ],
+    "resolveLead": "What if every one of these thoughts",
+    "resolve1": "had the same answer?",
+    "resolve2": "You're not missing knowledge. You're missing the space — and the method — to speak.",
+    "cta": "Find your voice"
   },
   "dimitraVideos": {
     "label": "Meet Dimitra",

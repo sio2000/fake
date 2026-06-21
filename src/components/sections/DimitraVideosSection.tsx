@@ -176,7 +176,8 @@ export default function DimitraVideosSection() {
             id="dimitra-videos-heading"
             className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-plum leading-[1.08] tracking-tight"
           >
-            {t("headline")}
+            {t("headline").split(" ").slice(0, -1).join(" ")}{" "}
+            <span className="text-gradient">{t("headline").split(" ").slice(-1)}</span>
           </h2>
           <p className="mt-5 text-plum/55 text-base md:text-lg leading-relaxed">{t("body")}</p>
         </motion.div>
@@ -206,10 +207,11 @@ export default function DimitraVideosSection() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-plum-mid/65 via-lav-700/15 to-lav-400/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-plum-mid/70 via-lav-700/15 to-lav-400/5" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 text-lav-600 shadow-medium ring-1 ring-lav-300/70 border border-white/60 group-hover:scale-110 group-hover:ring-gold-300/70 transition-all duration-500">
-                      <PlayIcon className="w-5 h-5 ml-0.5" />
+                    <span className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 text-plum shadow-gold-glow ring-1 ring-white/60 group-hover:scale-110 transition-all duration-500">
+                      <span className="absolute inset-0 rounded-full ring-2 ring-gold-300/60 animate-ping" aria-hidden />
+                      <PlayIcon className="relative w-6 h-6 ml-0.5" />
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">

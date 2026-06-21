@@ -45,19 +45,23 @@ export default function PersonalizationSection() {
                     <div className="text-[10px] font-bold text-lav-300 tracking-[0.22em] uppercase mb-4">
                       {t("cardLabel")}
                     </div>
-                    <div className="space-y-3">
+                    <div className="relative space-y-4">
+                      <span
+                        className="absolute left-[0.6875rem] top-3 bottom-3 w-px bg-gradient-to-b from-lav-400/70 via-lav-500/30 to-transparent"
+                        aria-hidden
+                      />
                       {cardSteps.map((step, i) => (
                         <motion.div
                           key={step}
                           initial={{ opacity: 0, x: -16 }}
                           animate={inView ? { opacity: 1, x: 0 } : {}}
                           transition={{ delay: 0.3 + i * 0.09, duration: 0.5 }}
-                          className="flex items-center gap-3"
+                          className="relative flex items-center gap-3.5"
                         >
-                          <div className="w-5 h-5 rounded-full bg-lav-600/50 flex items-center justify-center flex-shrink-0">
-                            <div className="w-1.5 h-1.5 rounded-full bg-lav-300" />
-                          </div>
-                          <span className="text-white/65 text-sm">{step}</span>
+                          <span className="relative z-10 flex h-[1.375rem] w-[1.375rem] flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-lav-400 to-lav-600 text-[10px] font-bold text-white shadow-[0_0_12px_rgba(155,111,232,0.5)]">
+                            {i + 1}
+                          </span>
+                          <span className="text-white/75 text-sm">{step}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -73,10 +77,10 @@ export default function PersonalizationSection() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute max-lg:static max-lg:mt-4 max-lg:mx-auto max-lg:w-fit max-lg:[animation:none] lg:-top-5 lg:-right-5 glass rounded-2xl px-5 py-3 shadow-medium border border-lav-200/50"
               >
-                <div className="text-[10px] font-bold text-plum/35 uppercase tracking-widest mb-1">
+                <div className="text-[10px] font-bold text-plum/40 uppercase tracking-widest mb-1">
                   {t("groupSizeLabel")}
                 </div>
-                <div className="font-display text-2xl text-plum font-medium">{t("groupSize")}</div>
+                <div className="font-display text-2xl text-gradient font-medium">{t("groupSize")}</div>
               </motion.div>
             </div>
           </motion.div>
